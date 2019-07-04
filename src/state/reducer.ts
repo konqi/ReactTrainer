@@ -1,22 +1,23 @@
-enum ActionType {
-  ADD_TRAINEE
-}
+import { ActionType } from "./actions";
 
-interface Action {
+export interface Action {
   type: ActionType;
   payload: Trainee;
 }
 
-interface Trainee {
+export interface Trainee {
   name: string;
   price: number;
 }
 
-interface ApplicationState {
+export interface ApplicationState {
   trainees: Trainee[];
 }
 
-function reducer(state: ApplicationState, action: Action): ApplicationState {
+export const reducer = (
+  state: ApplicationState,
+  action: Action
+): ApplicationState => {
   switch (action.type) {
     case ActionType.ADD_TRAINEE:
       const newTrainees = [...state.trainees, action.payload];
@@ -24,4 +25,4 @@ function reducer(state: ApplicationState, action: Action): ApplicationState {
     default:
       throw new Error();
   }
-}
+};
