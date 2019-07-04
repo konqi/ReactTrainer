@@ -14,6 +14,10 @@ export interface ApplicationState {
   trainees: Trainee[];
 }
 
+export const initialApplicationState: ApplicationState = {
+  trainees: []
+};
+
 export const reducer = (
   state: ApplicationState,
   action: Action

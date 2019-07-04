@@ -1,6 +1,7 @@
 import { Button, TextField } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import * as React from "react";
+import { ApplicationContext } from "./App";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const CreateTrainee = () => {
   const classes = useStyles();
-
+  const { state, dispatch } = React.useContext(ApplicationContext);
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <TextField
