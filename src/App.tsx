@@ -7,6 +7,7 @@ import {
   Action,
   ApplicationState
 } from "./state/reducer";
+import { TraineeList } from "./TraineeList";
 
 const useReducerInitialValue: {
   state?: ApplicationState;
@@ -22,6 +23,7 @@ const App: React.FC = () => {
     <div className="App">
       <ApplicationContext.Provider value={{ state, dispatch }}>
         <CreateTrainee />
+        <TraineeList />
       </ApplicationContext.Provider>
     </div>
   );

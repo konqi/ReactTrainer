@@ -30,7 +30,7 @@ export const CreateTrainee = () => {
   const classes = useStyles();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(1500);
-  const { state, dispatch } = useContext(ApplicationContext);
+  const { dispatch } = useContext(ApplicationContext);
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
