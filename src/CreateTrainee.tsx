@@ -29,13 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
 export const CreateTrainee = () => {
   const classes = useStyles();
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(1500);
+  const [price, setPrice] = useState<number>(1500);
   const { dispatch } = useContext(ApplicationContext);
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
       <TextField
-        id="standard-name"
+        id="nameTextField"
         label="Name"
         className={classes.textField}
         value={name}
@@ -45,12 +45,13 @@ export const CreateTrainee = () => {
         margin="normal"
       />
       <TextField
-        id="standard-name"
+        id="priceTextField"
         label="Preis"
         className={classes.textField}
-        value={price}
+        value={String(price)}
         onChange={({ target: { value } }) => {
-          setPrice(Number(value));
+          const num = Number(value);
+          isNaN(num) || (isFinite(num) && setPrice(num));
         }}
         margin="normal"
       />
