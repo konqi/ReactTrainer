@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TraineeList } from "./TraineeList";
-import { default as TestRenderer } from "react-test-renderer";
+import { render } from "@testing-library/react";
 import { ApplicationContext } from "./App";
 import { ApplicationState } from "./state/reducer";
 
@@ -16,13 +16,15 @@ describe("TraineeList", () => {
         trainees: trainees
       };
 
-      const something = TestRenderer.create(
+      const { baseElement, unmount } = render(
         <ApplicationContext.Provider value={{ state }}>
           <TraineeList />
         </ApplicationContext.Provider>
       );
 
-      expect(something).toMatchSnapshot();
+      expect(baseElement).toMatchSnapshot();
+
+      unmount();
     }
   );
 });

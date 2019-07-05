@@ -1,91 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TraineeList should show TraineeList with no trainee 1`] = `
-<div
-  className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1 MuiPaper-rounded"
->
-  <table
-    className="MuiTable-root makeStyles-table-2"
-  >
-    <thead
-      className="MuiTableHead-root"
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1 MuiPaper-rounded"
     >
-      <tr
-        className="MuiTableRow-root MuiTableRow-head"
+      <table
+        class="MuiTable-root makeStyles-table-2"
       >
-        <th
-          aria-sort={null}
-          className="MuiTableCell-root MuiTableCell-head"
-          scope="col"
+        <thead
+          class="MuiTableHead-root"
         >
-          Name
-        </th>
-        <th
-          aria-sort={null}
-          className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
-          scope="col"
-        >
-          Preis
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      className="MuiTableBody-root"
-    />
-  </table>
-</div>
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Name
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+              scope="col"
+            >
+              Preis
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
+        />
+      </table>
+    </div>
+  </div>
+</body>
 `;
 
 exports[`TraineeList should show TraineeList with one trainee 1`] = `
-<div
-  className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1 MuiPaper-rounded"
->
-  <table
-    className="MuiTable-root makeStyles-table-2"
-  >
-    <thead
-      className="MuiTableHead-root"
+<body>
+  <div />
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-49 MuiPaper-rounded"
     >
-      <tr
-        className="MuiTableRow-root MuiTableRow-head"
+      <table
+        class="MuiTable-root makeStyles-table-50"
       >
-        <th
-          aria-sort={null}
-          className="MuiTableCell-root MuiTableCell-head"
-          scope="col"
+        <thead
+          class="MuiTableHead-root"
         >
-          Name
-        </th>
-        <th
-          aria-sort={null}
-          className="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
-          scope="col"
+          <tr
+            class="MuiTableRow-root MuiTableRow-head"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-head"
+              scope="col"
+            >
+              Name
+            </th>
+            <th
+              class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight"
+              scope="col"
+            >
+              Preis
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class="MuiTableBody-root"
         >
-          Preis
-        </th>
-      </tr>
-    </thead>
-    <tbody
-      className="MuiTableBody-root"
-    >
-      <tr
-        className="MuiTableRow-root"
-      >
-        <th
-          aria-sort={null}
-          className="MuiTableCell-root MuiTableCell-body"
-          scope="row"
-        >
-          Tester
-        </th>
-        <td
-          aria-sort={null}
-          className="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
-        >
-          1500
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+          <tr
+            class="MuiTableRow-root"
+          >
+            <th
+              class="MuiTableCell-root MuiTableCell-body"
+              scope="row"
+            >
+              Tester
+            </th>
+            <td
+              class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight"
+            >
+              1500
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
 `;
