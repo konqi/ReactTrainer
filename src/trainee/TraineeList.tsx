@@ -4,30 +4,30 @@ import {
   TableBody,
   TableCell,
   TableHead,
-  TableRow
-} from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import * as React from "react";
-import { useContext } from "react";
-import { ApplicationContext } from "./App";
+  TableRow,
+} from '@material-ui/core'
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles'
+import * as React from 'react'
+import {useContext} from 'react'
+import {ApplicationContext} from '../context'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "100%",
+      width: '100%',
       marginTop: theme.spacing(3),
-      overflowX: "auto"
+      overflowX: 'auto',
     },
     table: {
-      minWidth: "85%"
-    }
+      minWidth: '85%',
+    },
   })
-);
+)
 
-export const TraineeList = () => {
-  const classes = useStyles();
+export const TraineeList: React.FC = () => {
+  const classes = useStyles()
 
-  const { state } = useContext(ApplicationContext);
+  const {state} = useContext(ApplicationContext)
 
   return (
     <Paper className={classes.root}>
@@ -40,7 +40,7 @@ export const TraineeList = () => {
         </TableHead>
         <TableBody>
           {state!.trainees.map(trainee => (
-            <TableRow key={trainee.name}>
+            <TableRow key={trainee.id}>
               <TableCell component="th" scope="row">
                 {trainee.name}
               </TableCell>
@@ -50,5 +50,5 @@ export const TraineeList = () => {
         </TableBody>
       </Table>
     </Paper>
-  );
-};
+  )
+}

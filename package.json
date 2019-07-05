@@ -9,11 +9,13 @@
     "@types/node": "12.0.12",
     "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
+    "@types/uuid": "^3.4.5",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "react-test-renderer": "^16.8.6",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
