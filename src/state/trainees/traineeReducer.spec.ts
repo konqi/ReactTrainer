@@ -1,5 +1,6 @@
-import {TraineeState, reduceTrainees} from './traineeReducer'
+import {reduceTrainees} from './traineeReducer'
 import {createAddTraineeAction} from './traineeActions'
+import {TraineeState} from './types'
 
 describe('traineeReducer', () => {
   it('should add trainee to state with ADD_TRAINEE action', () => {

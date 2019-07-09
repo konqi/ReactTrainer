@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot tests should show a valid entry 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiGrid-root makeStyles-calendar-2 MuiGrid-container MuiGrid-direction-xs-column"
+      >
+        <div
+          class="MuiGrid-root makeStyles-center-3 MuiGrid-item"
+        >
+          <span
+            class="MuiTypography-root MuiTypography-h4"
+          >
+            21
+          </span>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item"
+        >
+          Juli
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

@@ -1,5 +1,5 @@
-import {Trainee} from '../../types/trainee'
-import {AddTraineeFSA, RemoveTraineeFSA} from './traineeActions'
+import {Trainee} from '../../types/Trainee'
+import {AddTraineeFSA, RemoveTraineeFSA, OpenTraineeFSA} from './traineeActions'
 
 export type TraineeState = Trainee[]
-export type TraineeFSAs = AddTraineeFSA | RemoveTraineeFSA
+export type TraineeFSAs = AddTraineeFSA | RemoveTraineeFSA | OpenTraineeFSA

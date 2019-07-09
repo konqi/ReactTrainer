@@ -1,9 +1,9 @@
 import {Button, TextField} from '@material-ui/core'
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles'
 import * as React from 'react'
-import {ApplicationContext} from '../context'
-import {useState, useContext} from 'react'
-import {createAddTraineeAction} from '../state/trainees'
+import {useState} from 'react'
+import {useDispatch} from 'react-redux'
+import {createAddTraineeIntend} from '../state/intends/UserIntend'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,15 +13,8 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyItems: 'center',
     },
     textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      width: 200,
-    },
-    dense: {
-      marginTop: 19,
-    },
-    menu: {
-      width: 200,
+      // marginLeft: theme.spacing(1),
+      // marginRight: theme.spacing(1),
     },
   })
 )
@@ -30,7 +23,7 @@ export const CreateTrainee: React.FC = () => {
   const classes = useStyles()
   const [name, setName] = useState('')
   const [price, setPrice] = useState<number>(15)
-  const {dispatch} = useContext(ApplicationContext)
+  const dispatch = useDispatch()
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
@@ -42,6 +35,7 @@ export const CreateTrainee: React.FC = () => {
         onChange={({target: {value}}) => {
           setName(value)
         }}
+        fullWidth
         margin="normal"
       />
       <TextField
@@ -60,12 +54,13 @@ export const CreateTrainee: React.FC = () => {
           const num = Number(value)
           isNaN(num) || (isFinite(num) && setPrice(num))
         }}
+        fullWidth
         margin="normal"
       />
       <Button
         onClick={() =>
-          dispatch!(
-            createAddTraineeAction({
+          dispatch(
+            createAddTraineeIntend({
               name,
               price,
             })

@@ -1,23 +1,26 @@
 import * as React from 'react'
 import {TraineeList} from './TraineeList'
 import {render} from '@testing-library/react'
-import {ApplicationContext} from '../context'
 import {ApplicationState} from '../state'
+import {createStore} from 'redux'
+import {rootReducer} from '../state/rootReducer'
+import {Provider} from 'react-redux'
 
-describe('TraineeList', () => {
+describe('snapshot tests', () => {
   test.each`
     description      | trainees
     ${'no trainee'}  | ${[]}
     ${'one trainee'} | ${[{id: 0, name: 'Tester', price: 1500}]}
   `('should show TraineeList with $description', ({description, trainees}) => {
-    const state: ApplicationState = {
-      trainees: trainees,
+    const state: Pick<ApplicationState, 'trainees'> = {
+      trainees,
     }
+    const store = createStore(rootReducer, state)
 
     const {baseElement, unmount} = render(
-      <ApplicationContext.Provider value={{state}}>
+      <Provider store={store}>
         <TraineeList />
-      </ApplicationContext.Provider>
+      </Provider>
     )
 
     expect(baseElement).toMatchSnapshot()

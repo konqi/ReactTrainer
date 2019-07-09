@@ -1,0 +1,1 @@
+export {createAddTrainingAction} from './trainingActions'

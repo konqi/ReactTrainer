@@ -1,10 +1,8 @@
-import {ApplicationState} from '.'
-import {FSA} from '../types/FSA'
+import {combineReducers} from 'redux'
 import {reduceTrainees} from './trainees'
+import {reduceUi} from './ui'
 
-export const rootReducer = (
-  state: ApplicationState,
-  action: FSA<any, any>
-): ApplicationState => ({
-  trainees: reduceTrainees(state.trainees, action),
+export const rootReducer = combineReducers({
+  trainees: reduceTrainees,
+  ui: reduceUi,
 })

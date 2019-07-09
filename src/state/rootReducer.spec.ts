@@ -3,8 +3,8 @@ import {initialApplicationState} from '.'
 
 describe('rootReducer', () => {
   it('should', () => {
-    // @ts-ignore
     const result = rootReducer(initialApplicationState, {type: undefined})
-    console.log(result)
+    // nothing should happen without an action
+    expect(result).toEqual(initialApplicationState)
   })
 })

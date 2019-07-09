@@ -8,8 +8,11 @@ import {
 } from '@material-ui/core'
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles'
 import * as React from 'react'
-import {useContext} from 'react'
-import {ApplicationContext} from '../context'
+import {useDispatch, useSelector} from 'react-redux'
+import {ApplicationState} from '../state'
+import {createUiNavigateAction} from '../state/ui/uiActions'
+import {Page} from '../types/page'
+import {Trainee} from '../types/Trainee'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,8 +29,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const TraineeList: React.FC = () => {
   const classes = useStyles()
-
-  const {state} = useContext(ApplicationContext)
+  const trainees = useSelector<ApplicationState, Trainee[]>(
+    state => state.trainees
+  )
+  const dispatch = useDispatch()
+  const openTrainee = (traineeId: string) => {
+    dispatch(createUiNavigateAction(Page.Trainee, {traineeId}))
+  }
 
   return (
     <Paper className={classes.root}>
@@ -39,8 +47,12 @@ export const TraineeList: React.FC = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {state!.trainees.map(trainee => (
-            <TableRow key={trainee.id}>
+          {trainees.map(trainee => (
+            <TableRow
+              key={trainee.id}
+              hover
+              onClick={() => openTrainee(trainee.id)}
+            >
               <TableCell component="th" scope="row">
                 {trainee.name}
               </TableCell>
