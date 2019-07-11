@@ -3,6 +3,7 @@ import {Session} from '../../types/Session'
 
 export enum SessionActions {
   ADD_SESSION = '[SESSION] add',
+  ADD_SESSIONS = '[SESSION] add multiple',
   FETCH_SESSIONS_FOR_TRAINEE = '[SESSION] fetch sessions for trainee',
 }
 
@@ -13,6 +14,13 @@ export const createAddSessionAction = (
 ): AddSessionFSA => ({
   type: SessionActions.ADD_SESSION,
   payload,
+})
+
+export type AddSessionsPayload = {[key:string]: Session}
+export type AddSessionsFSA = FSA<SessionActions.ADD_SESSIONS, AddSessionsPayload>
+export const createAddSessionsAction = (payload: AddSessionsPayload): AddSessionsFSA => ({
+  type: SessionActions.ADD_SESSIONS,
+  payload
 })
 
 export type FetchSessionsForTraineeFSA = FSA<

@@ -26,6 +26,7 @@ function* addTraineeIntend(action: AddTraineeIntendFSA) {
       yield put(createAddTraineeAction(trainee))
       yield put(createShowTraineesIntend())
     } catch (e) {
+      console.error(e)
       // yield some error
     }
   }
@@ -44,6 +45,7 @@ function* fetchTrainees() {
 
     yield put(createAddTraineesAction(normalizedTrainees.entities.trainee))
   } catch (e) {
+    console.error(e)
     // yield some error
   }
 }
