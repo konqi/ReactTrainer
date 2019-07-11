@@ -3,6 +3,7 @@ import {FSA} from '../../types/FSA'
 
 export enum TraineeActions {
   ADD_TRAINEE = '[TRAINEE] add',
+  ADD_TRAINEES = '[TRAINEE] add multiple',
   REMOVE_TRAINEE = '[TRAINEE] remove',
   OPEN_TRAINEE = '[TRAINEE] open',
 }
@@ -10,6 +11,17 @@ export enum TraineeActions {
 export type AddTraineeFSA = FSA<TraineeActions.ADD_TRAINEE, Trainee>
 export const createAddTraineeAction = (payload: Trainee): AddTraineeFSA => ({
   type: TraineeActions.ADD_TRAINEE,
+  payload,
+})
+
+export type AddTraineesFSA = FSA<
+  TraineeActions.ADD_TRAINEES,
+  {[key: string]: Trainee}
+>
+export const createAddTraineesAction = (payload: {
+  [key: string]: Trainee
+}): AddTraineesFSA => ({
+  type: TraineeActions.ADD_TRAINEES,
   payload,
 })
 

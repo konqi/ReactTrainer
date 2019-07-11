@@ -10,8 +10,7 @@ import {createStyles, makeStyles, Theme} from '@material-ui/core/styles'
 import * as React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../state'
-import {createUiNavigateAction} from '../state/ui/uiActions'
-import {Page} from '../types/page'
+import {createShowTraineeDetailsIntend} from '../state/intends/UserIntend'
 import {Trainee} from '../types/Trainee'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -29,12 +28,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const TraineeList: React.FC = () => {
   const classes = useStyles()
-  const trainees = useSelector<ApplicationState, Trainee[]>(
-    state => state.trainees
+  const trainees = useSelector<ApplicationState, Trainee[]>(state =>
+    Object.values(state.trainees)
   )
   const dispatch = useDispatch()
   const openTrainee = (traineeId: string) => {
-    dispatch(createUiNavigateAction(Page.Trainee, {traineeId}))
+    dispatch(createShowTraineeDetailsIntend(traineeId))
   }
 
   return (

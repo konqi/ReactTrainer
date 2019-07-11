@@ -24,6 +24,7 @@ import {UiState} from './state/ui/types'
 import {CreateTrainee, TraineeDetails, TraineeList} from './trainee'
 import {Page} from './types/page'
 import {createUiNavigateAction} from './state/ui/uiActions'
+import {createShowTraineesIntend} from './state/intends/UserIntend'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,7 +48,13 @@ const App: React.FC = () => {
   const ui = useSelector<ApplicationState, UiState>(state => state.ui)
   const dispatch = useDispatch()
   const handleNavigation = (event: any, value: Page) => {
-    dispatch(createUiNavigateAction(value))
+    switch (value) {
+      case Page.Trainees:
+        return dispatch(createShowTraineesIntend())
+      default:
+        // only here for backward compatibility
+        return dispatch(createUiNavigateAction(value))
+    }
   }
 
   return (

@@ -60,7 +60,7 @@ export const NewTraining: React.FC<ExternalProps> = ({
   }
 
   const handleChangeTime = (event: ChangeEvent<HTMLInputElement>) => {
-    const result = /(\d{2})\:(\d{2})/.exec(event.target.value)
+    const result = /(\d{2}):(\d{2})/.exec(event.target.value)
     const [, hours, minutes] = result as String[]
     const newDate = new Date(datetime.getTime())
     newDate.setHours(Number(hours))
@@ -79,7 +79,7 @@ export const NewTraining: React.FC<ExternalProps> = ({
   const time = format(datetime, 'HH:mm')
 
   return (
-    <form onSubmit={handleSubmit} role="form">
+    <form onSubmit={handleSubmit}>
       <Grid container direction="column" spacing={2} className={classes.center}>
         <Grid item>
           <TextField

@@ -7,10 +7,10 @@ import {
   Theme,
 } from '@material-ui/core'
 import {grey} from '@material-ui/core/colors'
-import React, {useContext, useState} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import React, {useState, useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../state'
-import {createAddTrainingAction} from '../state/trainings'
+import {createAddTrainingIntend} from '../state/intends/UserIntend'
 import {Trainee} from '../types/Trainee'
 import {NewTraining} from './NewTraining'
 import {TrainingEntry} from './TrainingEntry'
@@ -44,23 +44,32 @@ interface ExternalProps {
 }
 
 export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
-  const trainee = useSelector<ApplicationState, Trainee | undefined>(state =>
-    state.trainees.find(trainee => trainee.id === traineeId)
-  )
+  const trainee = useSelector<ApplicationState, Trainee>(state => {
+    return state.trainees[traineeId]
+  })
   const dispatch = useDispatch()
   const [datetime, setDatetime] = useState(new Date())
   const [description, setDescription] = useState('')
   const [payedAmount, setPayedAmount] = useState(0)
   const classes = useStyles()
 
+  useEffect(() => {
+    setPayedAmount(trainee!.price)
+  }, [trainee!.price])
+
   const addNewTraining = () => {
-    dispatch(
-      createAddTrainingAction({
-        datetime,
-        payedAmount,
-        description,
-      })
-    )
+    if (trainee) {
+      dispatch(
+        createAddTrainingIntend(
+          {
+            datetime,
+            payedAmount,
+            description,
+          },
+          trainee.id
+        )
+      )
+    }
   }
 
   return (

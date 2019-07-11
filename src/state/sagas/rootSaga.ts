@@ -1,18 +1,22 @@
-import {takeEvery, select, call} from '@redux-saga/core/effects'
-import {UiActions} from '../ui/uiActions'
-import {ApplicationState} from '..'
-import {UiState} from '../ui/types'
-import {traineeSagas} from './traineeSags'
+import {all, spawn, call} from '@redux-saga/core/effects'
+import {traineeSagas} from './traineeSagas'
+import {uiSagas} from './uiSagas'
+import {sessionSagas} from './sessionSagas'
 
 export function* rootSaga() {
-  yield call(traineeSagas)
-  yield takeEvery(UiActions.NAVIGATE, tester)
-}
-
-function* tester() {
-  const ui: UiState = yield select(
-    (state: ApplicationState): UiState => state.ui
+  const sagas = [traineeSagas, uiSagas, sessionSagas]
+  yield all(
+    sagas.map(saga =>
+      spawn(function*() {
+        while (true) {
+          try {
+            yield call(saga)
+            break
+          } catch (e) {
+            console.log(e)
+          }
+        }
+      })
+    )
   )
-  console.log(ui)
-  return
 }

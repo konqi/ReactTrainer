@@ -4,6 +4,7 @@ import 'firebase/auth'
 
 export enum DbCollection {
   Trainee = 'trainee',
+  Session = 'session',
 }
 
 var firebaseConfig = {
