@@ -14,6 +14,7 @@ import {createAddTrainingIntend} from '../state/intends/UserIntend'
 import {Trainee} from '../types/Trainee'
 import {NewTraining} from './NewTraining'
 import {TrainingEntry} from './TrainingEntry'
+import {Session} from '../types/Session'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -47,6 +48,18 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
   const trainee = useSelector<ApplicationState, Trainee>(state => {
     return state.trainees[traineeId]
   })
+  const {sessions} = useSelector<
+    ApplicationState,
+    {sessions: Session[] | undefined}
+  >(state => {
+    const sessions =
+      state.trainees[traineeId].sessionsRef &&
+      state.trainees[traineeId].sessionsRef!.map(
+        (sessionRef: string) => state.sessions[sessionRef]
+      )
+    // TODO add next & previous session
+    return {sessions, nextSession: undefined, previousSession: undefined}
+  })
   const dispatch = useDispatch()
   const [datetime, setDatetime] = useState(new Date())
   const [description, setDescription] = useState('')
@@ -71,6 +84,7 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
       )
     }
   }
+  console.log(sessions)
 
   return (
     <Container className={classes.root}>
@@ -83,9 +97,7 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.calendar}>
-              <TrainingEntry
-                date={new Date(new Date().getTime() - 99999999999)}
-              />
+              {sessions && <TrainingEntry date={sessions[0].datetime} />}
             </Grid>
             <Grid item xs={4} className={classes.current}>
               <TrainingEntry date={datetime} />
