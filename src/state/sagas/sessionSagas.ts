@@ -8,21 +8,58 @@ import {
   UserIntend,
 } from '../intends/UserIntend'
 import {
-  createAddSessionAction,
-  createAddSessionsAction,
-  AddSessionsPayload,
-  AddSessionPayload,
+  createIngestSessionAction,
+  createIngestSessionsAction,
+  IngestSessionsPayload,
+  IngestSessionPayload,
+  SessionActions,
+  DeleteSessionsForTraineeFSA,
+  SaveSessionForTraineeFSA,
+  createExpelSessionAction,
 } from '../sessions/sessionActions'
 import {ApplicationState} from '..'
 import {Trainee} from '../../types/Trainee'
 import {createAddTraineeAction} from '../trainees'
 
 export function* sessionSagas() {
-  yield takeEvery(UserIntend.ADD_SESSION, addSession)
-  yield takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, fetchTraineeSessions)
+  yield takeEvery(
+    SessionActions.SAVE_SESSION_FOR_TRAINEE,
+    saveSessionForTrainee
+  )
+  // yield takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, fetchTraineeSessions)
+  yield takeEvery(
+    SessionActions.FETCH_SESSIONS_FOR_TRAINEE,
+    fetchTraineeSessions
+  )
+  yield takeEvery(
+    SessionActions.DELETE_SESSIONS_FOR_TRAINEE,
+    deleteSessionsForTrainee
+  )
 }
 
-function* addSession(action: AddTrainingIntendFSA) {
+function* deleteSessionsForTrainee(action: DeleteSessionsForTraineeFSA) {
+  try {
+    const querySnapshot: firebase.firestore.QuerySnapshot = yield call(() =>
+      db
+        .collection(DbCollection.Session)
+        .where('traineeRef', '==', action.payload!)
+        .get()
+    )
+    const sessionIdsToDelete: string[] = []
+    const batch = db.batch()
+    querySnapshot.forEach(doc => {
+      sessionIdsToDelete.push(doc.id)
+      batch.delete(doc.ref)
+    })
+    yield call(() => batch.commit())
+    // expel sessions from store
+    yield put(createExpelSessionAction(...sessionIdsToDelete))
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+function* saveSessionForTrainee(action: SaveSessionForTraineeFSA) {
   if (action.payload && action.meta && action.meta.traineeId) {
     try {
       const doc = {
@@ -34,7 +71,7 @@ function* addSession(action: AddTrainingIntendFSA) {
       )
 
       const session: Session = {...doc, id}
-      yield put(createAddSessionAction(session))
+      yield put(createIngestSessionAction(session))
       yield addSessionsToTrainee(action.meta!.traineeId, [session])
     } catch (e) {
       console.error(e)
@@ -54,7 +91,7 @@ function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
       if (typeof normalizedSessions.entities.session === 'undefined') {
         return
       }
-      yield put(createAddSessionsAction(normalizedSessions.entities.session))
+      yield put(createIngestSessionsAction(normalizedSessions.entities.session))
       // add sessions to trainees
       yield addSessionsToTrainee(
         action.payload!,

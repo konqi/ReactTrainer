@@ -1,6 +1,7 @@
 import {TraineeActions} from './traineeActions'
 import {TraineeFSAs, TraineeState} from './types'
 import {Trainee} from '../../types/Trainee'
+import {omit} from 'lodash'
 
 export const initialTraineeState: TraineeState = {}
 
@@ -15,6 +16,8 @@ export const reduceTrainees = (
     case TraineeActions.INGEST_TRAINEES:
       const trainees = action.payload as {[key: string]: Trainee}
       return {...state, ...trainees}
+    case TraineeActions.EXPEL_TRAINEES:
+      return omit(state, action.payload as string[])
     default:
       return state
   }

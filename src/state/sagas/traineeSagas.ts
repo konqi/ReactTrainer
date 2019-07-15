@@ -2,21 +2,20 @@ import {call, put, takeEvery} from '@redux-saga/core/effects'
 import {normalize, schema} from 'normalizr'
 import {db, DbCollection} from '../../db'
 import {Trainee, traineeSchema} from '../../types/Trainee'
-import {
-  AddTraineeIntendFSA,
-  createShowTraineesIntend,
-} from '../intends/UserIntend'
 import {createAddTraineeAction} from '../trainees'
 import {
   createIngestTraineesAction,
   TraineeActions,
   SaveTraineeFSA,
+  DeleteTraineeFSA,
+  createExpelTraineeAction,
 } from '../trainees/traineeActions'
 
 export function* traineeSagas() {
   yield takeEvery(TraineeActions.FETCH_TRAINEES, fetchTrainees)
   // yield takeEvery(TraineeActions.FETCH_TRAINEE, fetchTrainee)
   yield takeEvery(TraineeActions.SAVE_TRAINEE, saveTrainee)
+  yield takeEvery(TraineeActions.DELETE_TRAINEE, deleteTrainee)
 }
 
 function* saveTrainee(action: SaveTraineeFSA) {
@@ -28,11 +27,25 @@ function* saveTrainee(action: SaveTraineeFSA) {
 
       const trainee: Trainee = {...action.payload!, id}
       yield put(createAddTraineeAction(trainee))
-      yield put(createShowTraineesIntend())
     } catch (e) {
       console.error(e)
       // yield some error
     }
+  }
+}
+
+function* deleteTrainee(action: DeleteTraineeFSA) {
+  try {
+    yield call(() =>
+      db
+        .collection(DbCollection.Trainee)
+        .doc(action.payload!)
+        .delete()
+    )
+    // expel trainee from store
+    yield put(createExpelTraineeAction(action.payload!))
+  } catch (e) {
+    console.error('could not delete trainee', e)
   }
 }
 

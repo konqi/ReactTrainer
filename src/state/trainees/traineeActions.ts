@@ -4,6 +4,7 @@ import {FSA} from '../../types/FSA'
 export enum TraineeActions {
   INGEST_TRAINEE = '[TRAINEE] add',
   INGEST_TRAINEES = '[TRAINEE] add multiple',
+  EXPEL_TRAINEES = '[TRAINEE] expel from store',
 
   DELETE_TRAINEE = '[TRAINEE] delete',
   SAVE_TRAINEE = '[TRAINEE] save',
@@ -31,17 +32,25 @@ export const createIngestTraineesAction = (payload: {
   payload,
 })
 
-// export type RemoveTraineePayload = string
-// export type RemoveTraineeFSA = FSA<
-//   TraineeActions.REMOVE_TRAINEE,
-//   RemoveTraineePayload
-// >
-// export const createRemoveTraineeAction = (
-//   traineeId: string
-// ): RemoveTraineeFSA => ({
-//   type: TraineeActions.REMOVE_TRAINEE,
-//   payload: traineeId,
-// })
+export type ExpelTraineeFSA = FSA<TraineeActions.EXPEL_TRAINEES, string[]>
+export const createExpelTraineeAction = (
+  ...traineeIds: string[]
+): ExpelTraineeFSA => ({
+  type: TraineeActions.EXPEL_TRAINEES,
+  payload: traineeIds,
+})
+
+export type DeleteTraineePayload = string
+export type DeleteTraineeFSA = FSA<
+  TraineeActions.DELETE_TRAINEE,
+  DeleteTraineePayload
+>
+export const createDeleteTraineeAction = (
+  traineeId: string
+): DeleteTraineeFSA => ({
+  type: TraineeActions.DELETE_TRAINEE,
+  payload: traineeId,
+})
 
 export type SaveTraineePayload = Omit<Trainee, 'id'>
 export type SaveTraineeFSA = FSA<

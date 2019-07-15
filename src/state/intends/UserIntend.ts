@@ -1,6 +1,7 @@
 import {Trainee} from '../../types/Trainee'
 import {FSA} from '../../types/FSA'
 import {Session} from '../../types/Session'
+import {User} from 'firebase'
 
 export enum UserIntend {
   ADD_TRAINEE = '[INTEND] add trainee',
@@ -52,5 +53,13 @@ export const createShowTraineeDetailsIntend = (
   traineeId: string
 ): ShowTraineeDetailsIntendFSA => ({
   type: UserIntend.SHOW_TRAINEE_DETAILS,
+  payload: traineeId,
+})
+
+export type DeleteTraineeIntendFSA = FSA<UserIntend.DELETE_TRAINEE, string>
+export const createDeleteTraineeIntend = (
+  traineeId: string
+): DeleteTraineeIntendFSA => ({
+  type: UserIntend.DELETE_TRAINEE,
   payload: traineeId,
 })
