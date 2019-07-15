@@ -35,6 +35,7 @@ function* addSession(action: AddTrainingIntendFSA) {
 
       const session: Session = {...doc, id}
       yield put(createAddSessionAction(session))
+      yield addSessionsToTrainee(action.meta!.traineeId, [session])
     } catch (e) {
       console.error(e)
       // yield some error
@@ -50,11 +51,14 @@ function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
         {session: SessionsById},
         string
       > = yield call(fetchLatestSessionForTrainee, action.payload)
+      if (typeof normalizedSessions.entities.session === 'undefined') {
+        return
+      }
       yield put(createAddSessionsAction(normalizedSessions.entities.session))
       // add sessions to trainees
       yield addSessionsToTrainee(
         action.payload!,
-        normalizedSessions.entities.session!
+        Object.values(normalizedSessions.entities.session!)
       )
     } catch (e) {
       console.error(e)
@@ -63,13 +67,13 @@ function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
   }
 }
 
-function* addSessionsToTrainee(traineeId: string, sessions: SessionsById) {
+function* addSessionsToTrainee(traineeId: string, sessions: Session[]) {
   const trainee: Trainee = yield select(
     (state: ApplicationState) => state.trainees[traineeId]
   )
   trainee.sessionsRef = [
     ...(trainee.sessionsRef || []),
-    ...Object.keys(sessions),
+    ...sessions.map(session => session.id),
   ]
   yield put(createAddTraineeAction(trainee))
 }

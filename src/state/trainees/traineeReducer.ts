@@ -9,10 +9,10 @@ export const reduceTrainees = (
   action: TraineeFSAs
 ): TraineeState => {
   switch (action.type) {
-    case TraineeActions.ADD_TRAINEE:
+    case TraineeActions.INGEST_TRAINEE:
       const trainee = action.payload as Trainee
       return {...state, [trainee.id]: trainee}
-    case TraineeActions.ADD_TRAINEES:
+    case TraineeActions.INGEST_TRAINEES:
       const trainees = action.payload as {[key: string]: Trainee}
       return {...state, ...trainees}
     default:

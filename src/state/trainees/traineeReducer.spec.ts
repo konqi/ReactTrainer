@@ -1,5 +1,5 @@
 import {reduceTrainees} from './traineeReducer'
-import {createAddTraineeAction} from './traineeActions'
+import {createIngestTraineeAction} from './traineeActions'
 import {TraineeState} from './types'
 
 describe('traineeReducer', () => {
@@ -12,7 +12,7 @@ describe('traineeReducer', () => {
     }
 
     const initialState: TraineeState = []
-    const action = createAddTraineeAction(newTrainee)
+    const action = createIngestTraineeAction(newTrainee)
 
     expect(initialState.length).toBe(0)
     const state = reduceTrainees(initialState, action)

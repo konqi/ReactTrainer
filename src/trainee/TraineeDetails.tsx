@@ -65,10 +65,10 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
   const [description, setDescription] = useState('')
   const [payedAmount, setPayedAmount] = useState(0)
   const classes = useStyles()
-
+  const {price} = trainee
   useEffect(() => {
-    setPayedAmount(trainee!.price)
-  }, [trainee!.price])
+    setPayedAmount(price)
+  }, [price])
 
   const addNewTraining = () => {
     if (trainee) {
@@ -84,7 +84,6 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
       )
     }
   }
-  console.log(sessions)
 
   return (
     <Container className={classes.root}>

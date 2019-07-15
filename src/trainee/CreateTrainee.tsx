@@ -49,7 +49,7 @@ export const CreateTrainee: React.FC = () => {
             return
           }
           if ((value as string).length < 1) {
-            return
+            value = '0'
           }
           const num = Number(value)
           isNaN(num) || (isFinite(num) && setPrice(num))

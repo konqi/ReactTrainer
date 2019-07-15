@@ -5,17 +5,21 @@ import {Trainee, traineeSchema} from '../../types/Trainee'
 import {
   AddTraineeIntendFSA,
   createShowTraineesIntend,
-  UserIntend,
 } from '../intends/UserIntend'
 import {createAddTraineeAction} from '../trainees'
-import {createAddTraineesAction} from '../trainees/traineeActions'
+import {
+  createIngestTraineesAction,
+  TraineeActions,
+  SaveTraineeFSA,
+} from '../trainees/traineeActions'
 
 export function* traineeSagas() {
-  yield takeEvery(UserIntend.ADD_TRAINEE, addTraineeIntend)
-  yield takeEvery(UserIntend.SHOW_TRAINEES, fetchTrainees)
+  yield takeEvery(TraineeActions.FETCH_TRAINEES, fetchTrainees)
+  // yield takeEvery(TraineeActions.FETCH_TRAINEE, fetchTrainee)
+  yield takeEvery(TraineeActions.SAVE_TRAINEE, saveTrainee)
 }
 
-function* addTraineeIntend(action: AddTraineeIntendFSA) {
+function* saveTrainee(action: SaveTraineeFSA) {
   if (action.payload) {
     try {
       const {id} = yield call(() =>
@@ -32,6 +36,10 @@ function* addTraineeIntend(action: AddTraineeIntendFSA) {
   }
 }
 
+// function* fetchTrainee(traineeId: String) {
+//   yield console.log('foo')
+// }
+
 function* fetchTrainees() {
   try {
     const trainees: firebase.firestore.QuerySnapshot = yield db
@@ -43,7 +51,7 @@ function* fetchTrainees() {
       [traineeSchema]
     )
 
-    yield put(createAddTraineesAction(normalizedTrainees.entities.trainee))
+    yield put(createIngestTraineesAction(normalizedTrainees.entities.trainee))
   } catch (e) {
     console.error(e)
     // yield some error
