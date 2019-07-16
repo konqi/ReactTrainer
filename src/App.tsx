@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     body: {
       display: 'flex',
+      position: 'relative',
       flexDirection: 'column',
       flexGrow: 1,
       overflowX: 'auto',

@@ -1,14 +1,14 @@
 import {call, put, takeEvery} from '@redux-saga/core/effects'
-import {normalize, schema} from 'normalizr'
+import {normalize} from 'normalizr'
 import {db, DbCollection} from '../../db'
 import {Trainee, traineeSchema} from '../../types/Trainee'
 import {createAddTraineeAction} from '../trainees'
 import {
-  createIngestTraineesAction,
-  TraineeActions,
-  SaveTraineeFSA,
-  DeleteTraineeFSA,
   createExpelTraineeAction,
+  createIngestTraineesAction,
+  DeleteTraineeFSA,
+  SaveTraineeFSA,
+  TraineeActions,
 } from '../trainees/traineeActions'
 
 export function* traineeSagas() {

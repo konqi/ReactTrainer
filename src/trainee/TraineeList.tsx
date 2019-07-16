@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      margin: `${theme.spacing(3)}px 0`,
+      // bottom margin needs to be at least the height of the free floating button to avoid blocking access to a table item
+      margin: `${theme.spacing(3)}px 0 ${theme.spacing(10)}px 0`,
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
@@ -35,7 +36,17 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: '85%',
     },
     fabButton: {
-      margin: `${theme.spacing(3)}px auto`,
+      position: 'absolute',
+      bottom: 0,
+      right: theme.spacing(2),
+    },
+    sticky: {
+      position: 'sticky',
+      bottom: theme.spacing(2),
+      right: theme.spacing(2),
+    },
+    toolColumn: {
+      width: 10,
     },
   })
 )
@@ -64,7 +75,11 @@ export const TraineeList: React.FC = () => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell align="right">Preis</TableCell>
-              <TableCell align="right">#</TableCell>
+              <TableCell
+                align="right"
+                size="small"
+                className={classes.toolColumn}
+              />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -92,6 +107,8 @@ export const TraineeList: React.FC = () => {
             ))}
           </TableBody>
         </Table>
+      </Paper>
+      <span className={classes.sticky}>
         <Fab
           color="secondary"
           aria-label="Add"
@@ -100,7 +117,7 @@ export const TraineeList: React.FC = () => {
         >
           <AddIcon />
         </Fab>
-      </Paper>
+      </span>
     </React.Fragment>
   )
 }

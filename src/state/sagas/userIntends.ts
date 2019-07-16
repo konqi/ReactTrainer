@@ -4,7 +4,6 @@ import {
   AddTraineeIntendFSA,
   ShowTraineeDetailsIntendFSA,
   DeleteTraineeIntendFSA,
-  createShowTraineesIntend,
 } from '../intends/UserIntend'
 import {
   createSaveTraineeAction,
@@ -32,7 +31,7 @@ export function* userIntendSagas() {
 function* addTrainee({payload}: AddTraineeIntendFSA) {
   yield put(createSaveTraineeAction(payload!))
   // return to trainee list
-  yield put(createShowTraineesIntend())
+  yield showTrainees()
 }
 
 function* showTrainees() {

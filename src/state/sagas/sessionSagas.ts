@@ -1,24 +1,18 @@
-import {call, put, takeEvery, select} from '@redux-saga/core/effects'
+import {call, put, select, takeEvery} from '@redux-saga/core/effects'
 import {normalize, NormalizedSchema} from 'normalizr'
+import {ApplicationState} from '..'
 import {db, DbCollection} from '../../db'
 import {Session, sessionSchema} from '../../types/Session'
+import {Trainee} from '../../types/Trainee'
+import {ShowTraineeDetailsIntendFSA} from '../intends/UserIntend'
 import {
-  AddTrainingIntendFSA,
-  ShowTraineeDetailsIntendFSA,
-  UserIntend,
-} from '../intends/UserIntend'
-import {
+  createExpelSessionAction,
   createIngestSessionAction,
   createIngestSessionsAction,
-  IngestSessionsPayload,
-  IngestSessionPayload,
-  SessionActions,
   DeleteSessionsForTraineeFSA,
   SaveSessionForTraineeFSA,
-  createExpelSessionAction,
+  SessionActions,
 } from '../sessions/sessionActions'
-import {ApplicationState} from '..'
-import {Trainee} from '../../types/Trainee'
 import {createAddTraineeAction} from '../trainees'
 
 export function* sessionSagas() {
@@ -99,7 +93,7 @@ function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
       )
     } catch (e) {
       console.error(e)
-      // yield some error
+      // yield some error?
     }
   }
 }

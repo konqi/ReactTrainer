@@ -1,7 +1,6 @@
 import {Trainee} from '../../types/Trainee'
 import {FSA} from '../../types/FSA'
 import {Session} from '../../types/Session'
-import {User} from 'firebase'
 
 export enum UserIntend {
   ADD_TRAINEE = '[INTEND] add trainee',
