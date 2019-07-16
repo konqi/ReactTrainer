@@ -87,11 +87,6 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
 
   return (
     <Container className={classes.root}>
-      {/* <Paper className={classes.root}>
-        <Typography variant="h5" component="h3">
-          {trainee!.name}
-        </Typography>
-      </Paper> */}
       <Paper>
         <Container>
           <Grid container spacing={3}>
