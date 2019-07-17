@@ -26,7 +26,7 @@ interface ExternalProps {
   onSubmit?: () => void
 }
 
-export const NewTraining: React.FC<ExternalProps> = ({
+export const NewSession: React.FC<ExternalProps> = ({
   datetime = new Date(),
   description = undefined,
   payedAmount = 0,

@@ -1,6 +1,6 @@
 import {fireEvent, render} from '@testing-library/react'
 import * as React from 'react'
-import {NewTraining} from './NewTraining'
+import {NewSession} from './NewSession'
 
 const OriginalDate = global.Date
 
@@ -24,7 +24,7 @@ describe('snapshot tests', () => {
   })
 
   it('should render without parameters', () => {
-    const {baseElement, unmount} = render(<NewTraining />)
+    const {baseElement, unmount} = render(<NewSession />)
     expect(baseElement).toMatchSnapshot()
     unmount()
   })
@@ -34,7 +34,7 @@ describe('snapshot tests', () => {
     const description = ''
     const payedAmount = 10
     const {baseElement, unmount} = render(
-      <NewTraining {...{datetime, description, payedAmount}} />
+      <NewSession {...{datetime, description, payedAmount}} />
     )
     expect(baseElement).toMatchSnapshot()
     unmount()
@@ -45,7 +45,7 @@ describe('snapshot tests', () => {
     const description = ''
     const payedAmount = 10
     const {baseElement, unmount} = render(
-      <NewTraining {...{datetime, description, payedAmount}} />
+      <NewSession {...{datetime, description, payedAmount}} />
     )
     expect(baseElement).toMatchSnapshot()
     unmount()
@@ -74,7 +74,7 @@ describe('integration tests', () => {
   it('should update datetime according to date input change', () => {
     const mockFn = jest.fn()
     const {getByLabelText, unmount} = render(
-      <NewTraining onDatetimeChange={mockFn} />
+      <NewSession onDatetimeChange={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
@@ -94,7 +94,7 @@ describe('integration tests', () => {
 
     const future = new Date(Date.now() + 24 * 60 ** 2 * 1000) // tomorrow
     const {getByLabelText, unmount} = render(
-      <NewTraining datetime={future} onDatetimeChange={mockFn} />
+      <NewSession datetime={future} onDatetimeChange={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
@@ -112,7 +112,7 @@ describe('integration tests', () => {
   it('should update description', () => {
     const mockFn = jest.fn()
     const {getByLabelText, getByText, unmount} = render(
-      <NewTraining onDescriptionChange={mockFn} />
+      <NewSession onDescriptionChange={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
@@ -128,7 +128,7 @@ describe('integration tests', () => {
   it('should update payed amount', () => {
     const mockFn = jest.fn()
     const {getByLabelText, getByText, unmount} = render(
-      <NewTraining onPayedAmountChange={mockFn} />
+      <NewSession onPayedAmountChange={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
@@ -142,7 +142,7 @@ describe('integration tests', () => {
   it('should fire submit callback', () => {
     const mockFn = jest.fn()
     const {getByLabelText, getByText, getByRole, unmount} = render(
-      <NewTraining onSubmit={mockFn} />
+      <NewSession onSubmit={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()

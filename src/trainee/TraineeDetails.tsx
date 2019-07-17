@@ -7,12 +7,12 @@ import {
   Theme,
 } from '@material-ui/core'
 import {grey} from '@material-ui/core/colors'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useMemo} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../state'
 import {createAddTrainingIntend} from '../state/intends/UserIntend'
 import {Trainee} from '../types/Trainee'
-import {NewTraining} from './NewTraining'
+import {NewSession} from './NewSession'
 import {TrainingEntry} from './TrainingEntry'
 import {Session} from '../types/Session'
 
@@ -53,6 +53,7 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
     {sessions: Session[] | undefined}
   >(state => {
     const sessions =
+      state.trainees[traineeId] &&
       state.trainees[traineeId].sessionsRef &&
       state.trainees[traineeId].sessionsRef!.map(
         (sessionRef: string) => state.sessions[sessionRef]
@@ -60,15 +61,19 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
     // TODO add next & previous session
     return {sessions, nextSession: undefined, previousSession: undefined}
   })
+  const price = (trainee && trainee.price) || 0
   const dispatch = useDispatch()
   const [datetime, setDatetime] = useState(new Date())
   const [description, setDescription] = useState('')
-  const [payedAmount, setPayedAmount] = useState(0)
+  const [payedAmount, setPayedAmount] = useState(price)
   const classes = useStyles()
-  const {price} = trainee
-  useEffect(() => {
-    setPayedAmount(price)
-  }, [price])
+
+  // TODO
+  // const {previousSession, upcomingSession} = useMemo(() => {
+  //   const previousSession =
+
+  //   return {previousSession: null, upcomingSession: null}
+  // }, [sessions])
 
   const addNewTraining = () => {
     if (trainee) {
@@ -102,7 +107,7 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
           </Grid>
           <Grid container>
             <Grid item xs={12} className={classes.form}>
-              <NewTraining
+              <NewSession
                 datetime={datetime}
                 onDatetimeChange={setDatetime}
                 payedAmount={payedAmount}
