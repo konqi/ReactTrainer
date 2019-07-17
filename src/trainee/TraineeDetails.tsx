@@ -14,7 +14,9 @@ import {createAddTrainingIntend} from '../state/intends/UserIntend'
 import {Trainee} from '../types/Trainee'
 import {NewSession} from './NewSession'
 import {TrainingEntry} from './TrainingEntry'
-import {Session} from '../types/Session'
+import {Session, findFirstBeforeAndAfterDate} from '../types/Session'
+import {orderBy} from 'lodash'
+import {isBefore, isAfter} from 'date-fns'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -68,12 +70,10 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
   const [payedAmount, setPayedAmount] = useState(price)
   const classes = useStyles()
 
-  // TODO
-  // const {previousSession, upcomingSession} = useMemo(() => {
-  //   const previousSession =
-
-  //   return {previousSession: null, upcomingSession: null}
-  // }, [sessions])
+  const {previousSession, upcomingSession} = useMemo(
+    () => findFirstBeforeAndAfterDate(new Date(), sessions),
+    [sessions]
+  )
 
   const addNewTraining = () => {
     if (trainee) {
@@ -96,13 +96,17 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.calendar}>
-              {sessions && <TrainingEntry date={sessions[0].datetime} />}
+              {previousSession && (
+                <TrainingEntry date={previousSession.datetime} />
+              )}
             </Grid>
             <Grid item xs={4} className={classes.current}>
               <TrainingEntry date={datetime} />
             </Grid>
             <Grid item xs={4} className={classes.calendar}>
-              {/* <TrainingEntry date={new Date(1568029414613)} /> */}
+              {upcomingSession && (
+                <TrainingEntry date={upcomingSession.datetime} />
+              )}
             </Grid>
           </Grid>
           <Grid container>
