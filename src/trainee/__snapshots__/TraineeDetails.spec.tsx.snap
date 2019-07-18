@@ -67,7 +67,7 @@ exports[`snapshot tests with no other session 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingDateInput"
+                        for="SessionDateInput"
                       >
                         Datum
                       </label>
@@ -91,7 +91,7 @@ exports[`snapshot tests with no other session 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingDateInput"
+                          id="SessionDateInput"
                           type="date"
                           value="2069-07-21"
                         />
@@ -107,7 +107,7 @@ exports[`snapshot tests with no other session 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingPayedAmountInput"
+                        for="SessionPayedAmountInput"
                       >
                         Bezahlt
                       </label>
@@ -131,7 +131,7 @@ exports[`snapshot tests with no other session 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingPayedAmountInput"
+                          id="SessionPayedAmountInput"
                           type="number"
                           value="15"
                         />
@@ -147,7 +147,7 @@ exports[`snapshot tests with no other session 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
                         data-shrink="false"
-                        for="TrainingDescriptionInput"
+                        for="SessionDescriptionInput"
                       >
                         Beschreibung
                       </label>
@@ -171,7 +171,7 @@ exports[`snapshot tests with no other session 1`] = `
                         <textarea
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                          id="TrainingDescriptionInput"
+                          id="SessionDescriptionInput"
                           rows="1"
                         />
                         <textarea
@@ -316,7 +316,7 @@ exports[`snapshot tests with session in future 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingDateInput"
+                        for="SessionDateInput"
                       >
                         Datum
                       </label>
@@ -340,7 +340,7 @@ exports[`snapshot tests with session in future 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingDateInput"
+                          id="SessionDateInput"
                           type="date"
                           value="2069-07-21"
                         />
@@ -356,7 +356,7 @@ exports[`snapshot tests with session in future 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingPayedAmountInput"
+                        for="SessionPayedAmountInput"
                       >
                         Bezahlt
                       </label>
@@ -380,7 +380,7 @@ exports[`snapshot tests with session in future 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingPayedAmountInput"
+                          id="SessionPayedAmountInput"
                           type="number"
                           value="15"
                         />
@@ -396,7 +396,7 @@ exports[`snapshot tests with session in future 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
                         data-shrink="false"
-                        for="TrainingDescriptionInput"
+                        for="SessionDescriptionInput"
                       >
                         Beschreibung
                       </label>
@@ -420,7 +420,7 @@ exports[`snapshot tests with session in future 1`] = `
                         <textarea
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                          id="TrainingDescriptionInput"
+                          id="SessionDescriptionInput"
                           rows="1"
                         />
                         <textarea
@@ -564,7 +564,7 @@ exports[`snapshot tests with session in past 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingDateInput"
+                        for="SessionDateInput"
                       >
                         Datum
                       </label>
@@ -588,7 +588,7 @@ exports[`snapshot tests with session in past 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingDateInput"
+                          id="SessionDateInput"
                           type="date"
                           value="2069-07-21"
                         />
@@ -604,7 +604,7 @@ exports[`snapshot tests with session in past 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingPayedAmountInput"
+                        for="SessionPayedAmountInput"
                       >
                         Bezahlt
                       </label>
@@ -628,7 +628,7 @@ exports[`snapshot tests with session in past 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingPayedAmountInput"
+                          id="SessionPayedAmountInput"
                           type="number"
                           value="15"
                         />
@@ -644,7 +644,7 @@ exports[`snapshot tests with session in past 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
                         data-shrink="false"
-                        for="TrainingDescriptionInput"
+                        for="SessionDescriptionInput"
                       >
                         Beschreibung
                       </label>
@@ -668,7 +668,7 @@ exports[`snapshot tests with session in past 1`] = `
                         <textarea
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                          id="TrainingDescriptionInput"
+                          id="SessionDescriptionInput"
                           rows="1"
                         />
                         <textarea
@@ -837,7 +837,7 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingDateInput"
+                        for="SessionDateInput"
                       >
                         Datum
                       </label>
@@ -861,7 +861,7 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingDateInput"
+                          id="SessionDateInput"
                           type="date"
                           value="2069-07-21"
                         />
@@ -877,7 +877,7 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingPayedAmountInput"
+                        for="SessionPayedAmountInput"
                       >
                         Bezahlt
                       </label>
@@ -901,7 +901,7 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingPayedAmountInput"
+                          id="SessionPayedAmountInput"
                           type="number"
                           value="15"
                         />
@@ -917,7 +917,7 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
                         data-shrink="false"
-                        for="TrainingDescriptionInput"
+                        for="SessionDescriptionInput"
                       >
                         Beschreibung
                       </label>
@@ -941,7 +941,7 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                         <textarea
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                          id="TrainingDescriptionInput"
+                          id="SessionDescriptionInput"
                           rows="1"
                         />
                         <textarea
@@ -1065,7 +1065,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingDateInput"
+                        for="SessionDateInput"
                       >
                         Datum
                       </label>
@@ -1089,7 +1089,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingDateInput"
+                          id="SessionDateInput"
                           type="date"
                           value="2069-07-21"
                         />
@@ -1105,7 +1105,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
                         data-shrink="true"
-                        for="TrainingPayedAmountInput"
+                        for="SessionPayedAmountInput"
                       >
                         Bezahlt
                       </label>
@@ -1129,7 +1129,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                         <input
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input"
-                          id="TrainingPayedAmountInput"
+                          id="SessionPayedAmountInput"
                           type="number"
                           value="0"
                         />
@@ -1145,7 +1145,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                       <label
                         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
                         data-shrink="false"
-                        for="TrainingDescriptionInput"
+                        for="SessionDescriptionInput"
                       >
                         Beschreibung
                       </label>
@@ -1169,7 +1169,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                         <textarea
                           aria-invalid="false"
                           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                          id="TrainingDescriptionInput"
+                          id="SessionDescriptionInput"
                           rows="1"
                         />
                         <textarea

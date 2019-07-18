@@ -83,7 +83,7 @@ export const NewSession: React.FC<ExternalProps> = ({
       <Grid container direction="column" spacing={2} className={classes.center}>
         <Grid item>
           <TextField
-            id="TrainingDateInput"
+            id="SessionDateInput"
             type="date"
             variant="outlined"
             label="Datum"
@@ -96,7 +96,7 @@ export const NewSession: React.FC<ExternalProps> = ({
         {isFuture(datetime) && (
           <Grid item>
             <TextField
-              id="TrainingTimeInput"
+              id="SessionTimeInput"
               type="time"
               variant="outlined"
               label="Uhrzeit"
@@ -109,7 +109,7 @@ export const NewSession: React.FC<ExternalProps> = ({
         {/* payed? amount */}
         <Grid item>
           <TextField
-            id="TrainingPayedAmountInput"
+            id="SessionPayedAmountInput"
             type="number"
             variant="outlined"
             value={payedAmount}
@@ -121,7 +121,7 @@ export const NewSession: React.FC<ExternalProps> = ({
         {/* description */}
         <Grid item>
           <TextField
-            id="TrainingDescriptionInput"
+            id="SessionDescriptionInput"
             multiline
             variant="outlined"
             label="Beschreibung"

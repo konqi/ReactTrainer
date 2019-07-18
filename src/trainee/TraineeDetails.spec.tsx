@@ -135,3 +135,29 @@ describe('snapshot tests', () => {
     unmount()
   })
 })
+
+describe('integration tests', () => {
+  it('should generate user intend with data from current state', () => {
+    const trainee = new TraineeBuilder().build()
+    const store = createMockStore({
+      ...initialApplicationState,
+      trainees: {
+        [trainee.id]: trainee,
+      },
+    })
+
+    const {unmount, baseElement, getByLabelText} = render(
+      <Provider store={store}>
+        <TraineeDetails traineeId={'traineeId'} />
+      </Provider>
+    )
+
+    fireEvent.change(getByLabelText('Datum'), {target: {value: '2099-12-31'}})
+
+    fireEvent.change(getByLabelText('Uhrzeit'), {target: {value: '12:00'}})
+    getByLabelText('Bezahlt')
+    getByLabelText('Beschreibung')
+
+    unmount()
+  })
+})

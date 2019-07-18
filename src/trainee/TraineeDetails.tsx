@@ -7,16 +7,14 @@ import {
   Theme,
 } from '@material-ui/core'
 import {grey} from '@material-ui/core/colors'
-import React, {useState, useEffect, useMemo} from 'react'
+import React, {useMemo, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../state'
 import {createAddTrainingIntend} from '../state/intends/UserIntend'
+import {findFirstBeforeAndAfterDate, Session} from '../types/Session'
 import {Trainee} from '../types/Trainee'
 import {NewSession} from './NewSession'
 import {TrainingEntry} from './TrainingEntry'
-import {Session, findFirstBeforeAndAfterDate} from '../types/Session'
-import {orderBy} from 'lodash'
-import {isBefore, isAfter} from 'date-fns'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
