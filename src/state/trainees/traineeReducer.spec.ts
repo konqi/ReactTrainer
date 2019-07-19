@@ -1,22 +1,23 @@
 import {reduceTrainees} from './traineeReducer'
 import {createIngestTraineeAction} from './traineeActions'
 import {TraineeState} from './types'
+import {TraineeBuilder} from '../../__mocks__/store'
 
 describe('traineeReducer', () => {
   it('should add trainee to state with ADD_TRAINEE action', () => {
     jest.mock('uuid')
 
-    const newTrainee = {
-      name: 'Tester',
-      price: 1500,
-    }
+    const newTrainee = new TraineeBuilder()
+      .withName('Tester')
+      .withPrice(1500)
+      .build()
 
-    const initialState: TraineeState = []
+    const initialState: TraineeState = {}
     const action = createIngestTraineeAction(newTrainee)
 
-    expect(initialState.length).toBe(0)
+    expect(Object.keys(initialState).length).toBe(0)
     const state = reduceTrainees(initialState, action)
-    expect(state.length).toBeGreaterThan(0)
-    expect(state).toEqual([{...newTrainee, id: '1'}])
+    expect(Object.keys(state).length).toBeGreaterThan(0)
+    expect(state).toEqual({[newTrainee.id]: newTrainee})
   })
 })
