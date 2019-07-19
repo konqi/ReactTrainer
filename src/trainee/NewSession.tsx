@@ -56,6 +56,8 @@ export const NewSession: React.FC<ExternalProps> = ({
     newDate.setDate(Number(day))
     newDate.setMonth(Number(month) - 1)
     newDate.setFullYear(Number(year))
+    newDate.setSeconds(0)
+    newDate.setMilliseconds(0)
     onDatetimeChange(newDate)
   }
 

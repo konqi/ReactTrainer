@@ -9,6 +9,8 @@ import {
 } from '../__mocks__/store'
 import {initialApplicationState, ApplicationState} from '../state'
 import {restoreCausality, freezeTime} from '../__mocks__/date'
+import {UserIntend} from '../state/intends/UserIntend'
+import {format} from 'date-fns'
 
 describe('snapshot tests', () => {
   beforeAll(() => {
@@ -145,18 +147,44 @@ describe('integration tests', () => {
         [trainee.id]: trainee,
       },
     })
+    const spy = jest.spyOn(store, 'dispatch')
 
-    const {unmount, baseElement, getByLabelText} = render(
+    const {unmount, baseElement, getByLabelText, getByRole} = render(
       <Provider store={store}>
         <TraineeDetails traineeId={'traineeId'} />
       </Provider>
     )
 
-    fireEvent.change(getByLabelText('Datum'), {target: {value: '2099-12-31'}})
+    const date = Date.now() + 24 * 60 ** 2 * 1000
+    const session = new SessionBuilder('traineeId')
+      .withDescription('your name here')
+      .withPayedAmount(15)
+      .withDatetime(new Date(date - (date % 60000))) // strip seconds and millis
+      .build()
 
-    fireEvent.change(getByLabelText('Uhrzeit'), {target: {value: '12:00'}})
-    getByLabelText('Bezahlt')
-    getByLabelText('Beschreibung')
+    fireEvent.change(getByLabelText('Datum'), {
+      target: {value: format(session.datetime, 'YYYY-MM-DD')},
+    })
+    fireEvent.change(getByLabelText('Uhrzeit'), {
+      target: {value: format(session.datetime, 'HH:mm')},
+    })
+    fireEvent.change(getByLabelText('Bezahlt'), {
+      target: {value: `${session.payedAmount}`},
+    })
+    fireEvent.change(getByLabelText('Beschreibung'), {
+      target: {value: session.description},
+    })
+    fireEvent.submit(getByRole('form'))
+
+    expect(spy).toHaveBeenCalledWith({
+      type: UserIntend.ADD_SESSION,
+      payload: {
+        datetime: session.datetime,
+        description: session.description,
+        payedAmount: session.payedAmount,
+      },
+      meta: {traineeId: 'traineeId'},
+    })
 
     unmount()
   })

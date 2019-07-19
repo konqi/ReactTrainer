@@ -1,26 +1,16 @@
 import {fireEvent, render} from '@testing-library/react'
 import * as React from 'react'
 import {NewSession} from './NewSession'
-
-const OriginalDate = global.Date
+import {freezeTime, restoreCausality} from '../__mocks__/date'
 
 describe('snapshot tests', () => {
   beforeAll(() => {
     // @ts-ignore
-    global.Date = class extends OriginalDate {
-      constructor(datetime?: number) {
-        super(datetime || 3141592653589)
-        return this
-      }
-
-      static now() {
-        return 3141592653589
-      }
-    }
+    global.Date = freezeTime(3141592653589)
   })
 
   afterAll(() => {
-    global.Date = OriginalDate
+    global.Date = restoreCausality()
   })
 
   it('should render without parameters', () => {
@@ -55,20 +45,11 @@ describe('snapshot tests', () => {
 describe('integration tests', () => {
   beforeAll(() => {
     // @ts-ignore
-    global.Date = class extends OriginalDate {
-      constructor(datetime?: number) {
-        super(datetime || 3141592653589)
-        return this
-      }
-
-      static now() {
-        return 3141592653589
-      }
-    }
+    global.Date = freezeTime(3141592653589)
   })
 
   afterAll(() => {
-    global.Date = OriginalDate
+    global.Date = restoreCausality()
   })
 
   it('should update datetime according to date input change', () => {
