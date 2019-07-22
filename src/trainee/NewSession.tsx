@@ -20,9 +20,7 @@ interface ExternalProps {
   datetime?: Date
   description?: string
   payedAmount?: number
-  onDatetimeChange?: (date: Date) => void
-  onDescriptionChange?: (description: string) => void
-  onPayedAmountChange?: (payedAmount: number) => void
+  onChange: (property: string, value: string | number | Date) => void
   onSubmit?: () => void
 }
 
@@ -30,46 +28,39 @@ export const NewSession: React.FC<ExternalProps> = ({
   datetime = new Date(),
   description = undefined,
   payedAmount = 0,
-  onDatetimeChange = () => {},
-  onDescriptionChange = () => {},
-  onPayedAmountChange = () => {},
+  onChange = () => {},
   onSubmit = () => {},
 }) => {
   const classes = useStyles()
 
-  const handleStringChange = (callback: (newValue: string) => void) => (
+  const handleChange = (propertyName: string) => (
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    callback(event.target.value)
-  }
-
-  const handleNumberChange = (callback: (newValue: number) => void) => (
-    event: ChangeEvent<HTMLInputElement>
-  ) => {
-    callback(Number(event.target.value))
-  }
-
-  const handleChangeDate = (event: ChangeEvent<HTMLInputElement>) => {
-    const result = /(\d{4})-(\d{2})-(\d{2})/.exec(event.target.value)
-    const [, year, month, day] = result as String[]
-    const newDate = new Date(datetime.getTime())
-    newDate.setDate(Number(day))
-    newDate.setMonth(Number(month) - 1)
-    newDate.setFullYear(Number(year))
-    newDate.setSeconds(0)
-    newDate.setMilliseconds(0)
-    onDatetimeChange(newDate)
-  }
-
-  const handleChangeTime = (event: ChangeEvent<HTMLInputElement>) => {
-    const result = /(\d{2}):(\d{2})/.exec(event.target.value)
-    const [, hours, minutes] = result as String[]
-    const newDate = new Date(datetime.getTime())
-    newDate.setHours(Number(hours))
-    newDate.setMinutes(Number(minutes))
-    newDate.setSeconds(0)
-    newDate.setMilliseconds(0)
-    onDatetimeChange(newDate)
+    switch (propertyName) {
+      case 'date':
+        const dateSegments = /(\d{4})-(\d{2})-(\d{2})/.exec(event.target.value)
+        const [, year, month, day] = dateSegments as String[]
+        const newDate = new Date(datetime.getTime())
+        newDate.setDate(Number(day))
+        newDate.setMonth(Number(month) - 1)
+        newDate.setFullYear(Number(year))
+        newDate.setSeconds(0)
+        newDate.setMilliseconds(0)
+        return onChange(propertyName, newDate)
+      case 'time':
+        const timeSegments = /(\d{2}):(\d{2})/.exec(event.target.value)
+        const [, hours, minutes] = timeSegments as String[]
+        const newTime = new Date(datetime.getTime())
+        newTime.setHours(Number(hours))
+        newTime.setMinutes(Number(minutes))
+        newTime.setSeconds(0)
+        newTime.setMilliseconds(0)
+        return onChange(propertyName, newTime)
+      case 'payedAmount':
+        return onChange(propertyName, Number(event.target.value))
+      default:
+        return onChange(propertyName, event.target.value)
+    }
   }
 
   const handleSubmit = (event: FormEvent) => {
@@ -91,7 +82,7 @@ export const NewSession: React.FC<ExternalProps> = ({
             label="Datum"
             defaultValue={date}
             fullWidth
-            onChange={handleChangeDate}
+            onChange={handleChange('date')}
           />
         </Grid>
         {/* if date in future, show time */}
@@ -104,7 +95,7 @@ export const NewSession: React.FC<ExternalProps> = ({
               label="Uhrzeit"
               defaultValue={time}
               fullWidth
-              onChange={handleChangeTime}
+              onChange={handleChange('time')}
             />
           </Grid>
         )}
@@ -117,7 +108,7 @@ export const NewSession: React.FC<ExternalProps> = ({
             value={payedAmount}
             label="Bezahlt"
             fullWidth
-            onChange={handleNumberChange(onPayedAmountChange)}
+            onChange={handleChange('payedAmount')}
           />
         </Grid>
         {/* description */}
@@ -129,7 +120,7 @@ export const NewSession: React.FC<ExternalProps> = ({
             label="Beschreibung"
             value={description}
             fullWidth
-            onChange={handleStringChange(onDescriptionChange)}
+            onChange={handleChange('description')}
           />
         </Grid>
 

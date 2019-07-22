@@ -1,4 +1,4 @@
-import {fireEvent, render} from '@testing-library/react'
+import {fireEvent, render, cleanup} from '@testing-library/react'
 import * as React from 'react'
 import {TraineeDetails} from './TraineeDetails'
 import {Provider} from 'react-redux'
@@ -20,6 +20,10 @@ describe('snapshot tests', () => {
 
   afterAll(() => {
     global.Date = restoreCausality()
+  })
+
+  afterEach(() => {
+    cleanup()
   })
 
   test('with no other session', () => {
@@ -139,7 +143,9 @@ describe('snapshot tests', () => {
 })
 
 describe('integration tests', () => {
-  it('should generate user intend with data from current state', () => {
+  afterEach(cleanup)
+
+  it('should generate user intend with data from current state', async () => {
     const trainee = new TraineeBuilder().build()
     const store = createMockStore({
       ...initialApplicationState,
@@ -149,7 +155,7 @@ describe('integration tests', () => {
     })
     const spy = jest.spyOn(store, 'dispatch')
 
-    const {unmount, baseElement, getByLabelText, getByRole} = render(
+    const {unmount, getByLabelText, getByRole} = await render(
       <Provider store={store}>
         <TraineeDetails traineeId={'traineeId'} />
       </Provider>

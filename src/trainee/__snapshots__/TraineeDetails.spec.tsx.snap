@@ -226,8 +226,6 @@ exports[`snapshot tests with no other session 1`] = `
 
 exports[`snapshot tests with session in future 1`] = `
 <body>
-  <div />
-  <div />
   <div>
     <div
       class="MuiContainer-root makeStyles-root-545 MuiContainer-maxWidthLg"
@@ -475,7 +473,6 @@ exports[`snapshot tests with session in future 1`] = `
 
 exports[`snapshot tests with session in past 1`] = `
 <body>
-  <div />
   <div>
     <div
       class="MuiContainer-root makeStyles-root-273 MuiContainer-maxWidthLg"
@@ -723,9 +720,6 @@ exports[`snapshot tests with session in past 1`] = `
 
 exports[`snapshot tests with sessions in past and future 1`] = `
 <body>
-  <div />
-  <div />
-  <div />
   <div>
     <div
       class="MuiContainer-root makeStyles-root-817 MuiContainer-maxWidthLg"
@@ -996,10 +990,6 @@ exports[`snapshot tests with sessions in past and future 1`] = `
 
 exports[`snapshot tests with trainee missing in store 1`] = `
 <body>
-  <div />
-  <div />
-  <div />
-  <div />
   <div>
     <div
       class="MuiContainer-root makeStyles-root-1089 MuiContainer-maxWidthLg"

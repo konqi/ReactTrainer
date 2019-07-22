@@ -2,8 +2,6 @@
 
 exports[`snapshot tests should render time select for future dates 1`] = `
 <body>
-  <div />
-  <div />
   <div>
     <form>
       <div
@@ -84,7 +82,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 id="SessionTimeInput"
                 type="time"
-                value="01:37"
+                value="02:37"
               />
             </div>
           </div>
@@ -212,7 +210,6 @@ exports[`snapshot tests should render time select for future dates 1`] = `
 
 exports[`snapshot tests should render with parameters 1`] = `
 <body>
-  <div />
   <div>
     <form>
       <div

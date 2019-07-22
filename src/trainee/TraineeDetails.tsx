@@ -88,6 +88,21 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
     }
   }
 
+  const handleChange = (
+    propertyName: string,
+    value: number | string | Date
+  ) => {
+    switch (propertyName) {
+      case 'date':
+      case 'time':
+        return setDatetime(value as Date)
+      case 'payedAmount':
+        return setPayedAmount(value as number)
+      case 'description':
+        return setDescription(value as string)
+    }
+  }
+
   return (
     <Container className={classes.root}>
       <Paper>
@@ -111,11 +126,9 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
             <Grid item xs={12} className={classes.form}>
               <NewSession
                 datetime={datetime}
-                onDatetimeChange={setDatetime}
                 payedAmount={payedAmount}
-                onPayedAmountChange={setPayedAmount}
                 description={description}
-                onDescriptionChange={setDescription}
+                onChange={handleChange}
                 onSubmit={addNewTraining}
               />
             </Grid>
