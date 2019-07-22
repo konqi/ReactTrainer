@@ -113,9 +113,7 @@ async function fetchLatestSessionForTrainee(traineeId: string) {
   const result: firebase.firestore.QuerySnapshot = await db
     .collection(DbCollection.Session)
     .where('traineeRef', '==', traineeId)
-    .where('datetime', '<', new Date())
     .orderBy('datetime')
-    .limit(1)
     .get()
 
   const sessions: Session[] = result.docs.map(doc => {

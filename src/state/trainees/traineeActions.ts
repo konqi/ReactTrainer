@@ -67,3 +67,9 @@ export const createSaveTraineeAction = (
 export const createFetchTraineesAction = () => ({
   type: TraineeActions.FETCH_TRAINEES,
 })
+
+export type FetchTraineeFSA = FSA<TraineeActions.FETCH_TRAINEE, string>
+export const createFetchTraineeAction = (traineeId: string) => ({
+  type: TraineeActions.FETCH_TRAINEE,
+  payload: traineeId,
+})

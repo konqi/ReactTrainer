@@ -15,6 +15,8 @@ import {findFirstBeforeAndAfterDate, Session} from '../types/Session'
 import {Trainee} from '../types/Trainee'
 import {NewSession} from './NewSession'
 import {TrainingEntry} from './TrainingEntry'
+import {TraineeBalance} from './TraineeBalance'
+import {TraineeHistory} from './TraineeHistory'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -109,14 +111,17 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.calendar}>
+              letztes mal
               {previousSession && (
                 <TrainingEntry date={previousSession.datetime} />
               )}
             </Grid>
             <Grid item xs={4} className={classes.current}>
+              aktuell
               <TrainingEntry date={datetime} />
             </Grid>
             <Grid item xs={4} className={classes.calendar}>
+              nächstes mal
               {upcomingSession && (
                 <TrainingEntry date={upcomingSession.datetime} />
               )}
@@ -135,6 +140,9 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
           </Grid>
         </Container>
       </Paper>
+
+      <TraineeBalance traineeId={traineeId} />
+      <TraineeHistory traineeId={traineeId} />
     </Container>
   )
 }

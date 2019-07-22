@@ -27,7 +27,7 @@ interface ExternalProps {
 export const NewSession: React.FC<ExternalProps> = ({
   datetime = new Date(),
   description = undefined,
-  payedAmount = 0,
+  payedAmount = '',
   onChange = () => {},
   onSubmit = () => {},
 }) => {
@@ -105,7 +105,7 @@ export const NewSession: React.FC<ExternalProps> = ({
             id="SessionPayedAmountInput"
             type="number"
             variant="outlined"
-            value={payedAmount}
+            value={payedAmount || ''}
             label="Bezahlt"
             fullWidth
             onChange={handleChange('payedAmount')}

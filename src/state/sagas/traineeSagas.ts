@@ -9,13 +9,14 @@ import {
   DeleteTraineeFSA,
   SaveTraineeFSA,
   TraineeActions,
+  FetchTraineeFSA,
 } from '../trainees/traineeActions'
 
 export function* traineeSagas() {
   yield takeEvery(TraineeActions.FETCH_TRAINEES, fetchTrainees)
-  // yield takeEvery(TraineeActions.FETCH_TRAINEE, fetchTrainee)
   yield takeEvery(TraineeActions.SAVE_TRAINEE, saveTrainee)
   yield takeEvery(TraineeActions.DELETE_TRAINEE, deleteTrainee)
+  yield takeEvery(TraineeActions.FETCH_TRAINEE, fetchTrainee)
 }
 
 function* saveTrainee(action: SaveTraineeFSA) {
@@ -49,15 +50,36 @@ function* deleteTrainee(action: DeleteTraineeFSA) {
   }
 }
 
-// function* fetchTrainee(traineeId: String) {
-//   yield console.log('foo')
-// }
+function* fetchTrainee(action: FetchTraineeFSA) {
+  try {
+    const traineeId = action.payload
+    const trainee: firebase.firestore.DocumentSnapshot = yield call(() =>
+      db
+        .collection(DbCollection.Trainee)
+        .doc(traineeId)
+        .get()
+    )
+
+    if (trainee.exists) {
+      yield put(
+        createIngestTraineesAction({
+          [trainee.id]: {...(trainee.data() as Trainee), id: trainee.id},
+        })
+      )
+    } else {
+      console.error(`trainee with id '${traineeId}' not found`)
+    }
+  } catch (e) {
+    console.error(e)
+    // yield some error
+  }
+}
 
 function* fetchTrainees() {
   try {
-    const trainees: firebase.firestore.QuerySnapshot = yield db
-      .collection(DbCollection.Trainee)
-      .get()
+    const trainees: firebase.firestore.QuerySnapshot = yield call(() =>
+      db.collection(DbCollection.Trainee).get()
+    )
 
     const normalizedTrainees = normalize(
       trainees.docs.map(doc => ({...doc.data(), id: doc.id})),
