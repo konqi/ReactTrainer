@@ -43,12 +43,13 @@ export const CreateTrainee: React.FC = () => {
         type="number"
         label="Preis"
         className={classes.textField}
-        value={String(price)}
+        value={(price && String(price)) || ''}
         onChange={({target: {value}}) => {
           if (typeof value !== 'string') {
             return
           }
           if ((value as string).length < 1) {
+            setPrice(0)
             return
           }
           const num = Number(value)

@@ -54,3 +54,11 @@ export const createShowTraineeDetailsIntend = (
   type: UserIntend.SHOW_TRAINEE_DETAILS,
   payload: traineeId,
 })
+
+export type DeleteTraineeIntendFSA = FSA<UserIntend.DELETE_TRAINEE, string>
+export const createDeleteTraineeIntend = (
+  traineeId: string
+): DeleteTraineeIntendFSA => ({
+  type: UserIntend.DELETE_TRAINEE,
+  payload: traineeId,
+})

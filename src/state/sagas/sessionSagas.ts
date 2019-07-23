@@ -1,28 +1,59 @@
-import {call, put, takeEvery, select} from '@redux-saga/core/effects'
+import {call, put, select, takeEvery} from '@redux-saga/core/effects'
 import {normalize, NormalizedSchema} from 'normalizr'
+import {ApplicationState} from '..'
 import {db, DbCollection} from '../../db'
 import {Session, sessionSchema} from '../../types/Session'
-import {
-  AddTrainingIntendFSA,
-  ShowTraineeDetailsIntendFSA,
-  UserIntend,
-} from '../intends/UserIntend'
-import {
-  createAddSessionAction,
-  createAddSessionsAction,
-  AddSessionsPayload,
-  AddSessionPayload,
-} from '../sessions/sessionActions'
-import {ApplicationState} from '..'
 import {Trainee} from '../../types/Trainee'
+import {ShowTraineeDetailsIntendFSA} from '../intends/UserIntend'
+import {
+  createExpelSessionAction,
+  createIngestSessionAction,
+  createIngestSessionsAction,
+  DeleteSessionsForTraineeFSA,
+  SaveSessionForTraineeFSA,
+  SessionActions,
+} from '../sessions/sessionActions'
 import {createAddTraineeAction} from '../trainees'
 
 export function* sessionSagas() {
-  yield takeEvery(UserIntend.ADD_SESSION, addSession)
-  yield takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, fetchTraineeSessions)
+  yield takeEvery(
+    SessionActions.SAVE_SESSION_FOR_TRAINEE,
+    saveSessionForTrainee
+  )
+  // yield takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, fetchTraineeSessions)
+  yield takeEvery(
+    SessionActions.FETCH_SESSIONS_FOR_TRAINEE,
+    fetchTraineeSessions
+  )
+  yield takeEvery(
+    SessionActions.DELETE_SESSIONS_FOR_TRAINEE,
+    deleteSessionsForTrainee
+  )
 }
 
-function* addSession(action: AddTrainingIntendFSA) {
+function* deleteSessionsForTrainee(action: DeleteSessionsForTraineeFSA) {
+  try {
+    const querySnapshot: firebase.firestore.QuerySnapshot = yield call(() =>
+      db
+        .collection(DbCollection.Session)
+        .where('traineeRef', '==', action.payload!)
+        .get()
+    )
+    const sessionIdsToDelete: string[] = []
+    const batch = db.batch()
+    querySnapshot.forEach(doc => {
+      sessionIdsToDelete.push(doc.id)
+      batch.delete(doc.ref)
+    })
+    yield call(() => batch.commit())
+    // expel sessions from store
+    yield put(createExpelSessionAction(...sessionIdsToDelete))
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+function* saveSessionForTrainee(action: SaveSessionForTraineeFSA) {
   if (action.payload && action.meta && action.meta.traineeId) {
     try {
       const doc = {
@@ -34,7 +65,8 @@ function* addSession(action: AddTrainingIntendFSA) {
       )
 
       const session: Session = {...doc, id}
-      yield put(createAddSessionAction(session))
+      yield put(createIngestSessionAction(session))
+      yield addSessionsToTrainee(action.meta!.traineeId, [session])
     } catch (e) {
       console.error(e)
       // yield some error
@@ -50,26 +82,29 @@ function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
         {session: SessionsById},
         string
       > = yield call(fetchLatestSessionForTrainee, action.payload)
-      yield put(createAddSessionsAction(normalizedSessions.entities.session))
+      if (typeof normalizedSessions.entities.session === 'undefined') {
+        return
+      }
+      yield put(createIngestSessionsAction(normalizedSessions.entities.session))
       // add sessions to trainees
       yield addSessionsToTrainee(
         action.payload!,
-        normalizedSessions.entities.session!
+        Object.values(normalizedSessions.entities.session!)
       )
     } catch (e) {
       console.error(e)
-      // yield some error
+      // yield some error?
     }
   }
 }
 
-function* addSessionsToTrainee(traineeId: string, sessions: SessionsById) {
+function* addSessionsToTrainee(traineeId: string, sessions: Session[]) {
   const trainee: Trainee = yield select(
     (state: ApplicationState) => state.trainees[traineeId]
   )
   trainee.sessionsRef = [
     ...(trainee.sessionsRef || []),
-    ...Object.keys(sessions),
+    ...sessions.map(session => session.id),
   ]
   yield put(createAddTraineeAction(trainee))
 }
@@ -78,9 +113,7 @@ async function fetchLatestSessionForTrainee(traineeId: string) {
   const result: firebase.firestore.QuerySnapshot = await db
     .collection(DbCollection.Session)
     .where('traineeRef', '==', traineeId)
-    .where('datetime', '<', new Date())
     .orderBy('datetime')
-    .limit(1)
     .get()
 
   const sessions: Session[] = result.docs.map(doc => {

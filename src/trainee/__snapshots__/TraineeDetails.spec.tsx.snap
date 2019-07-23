@@ -1,0 +1,1213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot tests with no other session 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiContainer-root makeStyles-root-1 MuiContainer-maxWidthLg"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+          >
+            <div
+              class="MuiGrid-root makeStyles-calendar-2 MuiGrid-item MuiGrid-grid-xs-4"
+            />
+            <div
+              class="MuiGrid-root makeStyles-current-3 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-142 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-143 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-144 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      21
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-calendar-2 MuiGrid-item MuiGrid-grid-xs-4"
+            />
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root makeStyles-form-4 MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <form>
+                <div
+                  class="MuiGrid-root makeStyles-center-175 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionDateInput"
+                      >
+                        Datum
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-233"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionDateInput"
+                          type="date"
+                          value="2069-07-21"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionPayedAmountInput"
+                      >
+                        Bezahlt
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-233"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionPayedAmountInput"
+                          type="number"
+                          value="15"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                        data-shrink="false"
+                        for="SessionDescriptionInput"
+                      >
+                        Beschreibung
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-232 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-233"
+                            style="width: 0.01px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <textarea
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          id="SessionDescriptionInput"
+                          rows="1"
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          readonly=""
+                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; width: 100%;"
+                          tabindex="-1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+                      tabindex="0"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Hinzufügen
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`snapshot tests with session in future 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiContainer-root makeStyles-root-545 MuiContainer-maxWidthLg"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+          >
+            <div
+              class="MuiGrid-root makeStyles-calendar-546 MuiGrid-item MuiGrid-grid-xs-4"
+            />
+            <div
+              class="MuiGrid-root makeStyles-current-547 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-686 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-687 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-688 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      21
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-calendar-546 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-686 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-687 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-688 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      23
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root makeStyles-form-548 MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <form>
+                <div
+                  class="MuiGrid-root makeStyles-center-719 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionDateInput"
+                      >
+                        Datum
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-776 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-777"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionDateInput"
+                          type="date"
+                          value="2069-07-21"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionPayedAmountInput"
+                      >
+                        Bezahlt
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-776 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-777"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionPayedAmountInput"
+                          type="number"
+                          value="15"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                        data-shrink="false"
+                        for="SessionDescriptionInput"
+                      >
+                        Beschreibung
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-776 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-777"
+                            style="width: 0.01px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <textarea
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          id="SessionDescriptionInput"
+                          rows="1"
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          readonly=""
+                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; width: 100%;"
+                          tabindex="-1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+                      tabindex="0"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Hinzufügen
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`snapshot tests with session in past 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiContainer-root makeStyles-root-273 MuiContainer-maxWidthLg"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+          >
+            <div
+              class="MuiGrid-root makeStyles-calendar-274 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-414 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-415 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-416 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      1
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Januar
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-current-275 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-414 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-415 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-416 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      21
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-calendar-274 MuiGrid-item MuiGrid-grid-xs-4"
+            />
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root makeStyles-form-276 MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <form>
+                <div
+                  class="MuiGrid-root makeStyles-center-447 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionDateInput"
+                      >
+                        Datum
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-504 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-505"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionDateInput"
+                          type="date"
+                          value="2069-07-21"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionPayedAmountInput"
+                      >
+                        Bezahlt
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-504 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-505"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionPayedAmountInput"
+                          type="number"
+                          value="15"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                        data-shrink="false"
+                        for="SessionDescriptionInput"
+                      >
+                        Beschreibung
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-504 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-505"
+                            style="width: 0.01px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <textarea
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          id="SessionDescriptionInput"
+                          rows="1"
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          readonly=""
+                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; width: 100%;"
+                          tabindex="-1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+                      tabindex="0"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Hinzufügen
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`snapshot tests with sessions in past and future 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiContainer-root makeStyles-root-817 MuiContainer-maxWidthLg"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+          >
+            <div
+              class="MuiGrid-root makeStyles-calendar-818 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-958 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-959 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-960 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      19
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-current-819 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-958 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-959 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-960 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      21
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-calendar-818 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-958 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-959 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-960 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      23
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root makeStyles-form-820 MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <form>
+                <div
+                  class="MuiGrid-root makeStyles-center-991 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionDateInput"
+                      >
+                        Datum
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-1048 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-1049"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionDateInput"
+                          type="date"
+                          value="2069-07-21"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionPayedAmountInput"
+                      >
+                        Bezahlt
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-1048 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-1049"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionPayedAmountInput"
+                          type="number"
+                          value="15"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                        data-shrink="false"
+                        for="SessionDescriptionInput"
+                      >
+                        Beschreibung
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-1048 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-1049"
+                            style="width: 0.01px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <textarea
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          id="SessionDescriptionInput"
+                          rows="1"
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          readonly=""
+                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; width: 100%;"
+                          tabindex="-1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+                      tabindex="0"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Hinzufügen
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`snapshot tests with trainee missing in store 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiContainer-root makeStyles-root-1089 MuiContainer-maxWidthLg"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+          >
+            <div
+              class="MuiGrid-root makeStyles-calendar-1090 MuiGrid-item MuiGrid-grid-xs-4"
+            />
+            <div
+              class="MuiGrid-root makeStyles-current-1091 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1230 MuiPaper-rounded"
+              >
+                <div
+                  class="MuiGrid-root makeStyles-calendar-1231 MuiGrid-container MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root makeStyles-center-1232 MuiGrid-item"
+                  >
+                    <span
+                      class="MuiTypography-root MuiTypography-h4"
+                    >
+                      21
+                    </span>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    Juli
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-calendar-1090 MuiGrid-item MuiGrid-grid-xs-4"
+            />
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root makeStyles-form-1092 MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <form>
+                <div
+                  class="MuiGrid-root makeStyles-center-1263 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                >
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionDateInput"
+                      >
+                        Datum
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-1320 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-1321"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionDateInput"
+                          type="date"
+                          value="2069-07-21"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+                        data-shrink="true"
+                        for="SessionPayedAmountInput"
+                      >
+                        Bezahlt
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-1320 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-1321"
+                            style="width: 0px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <input
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input"
+                          id="SessionPayedAmountInput"
+                          type="number"
+                          value="0"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <div
+                      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+                    >
+                      <label
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                        data-shrink="false"
+                        for="SessionDescriptionInput"
+                      >
+                        Beschreibung
+                      </label>
+                      <div
+                        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline MuiOutlinedInput-multiline"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                          class="PrivateNotchedOutline-root-1320 MuiOutlinedInput-notchedOutline"
+                          style="padding-left: 8px;"
+                        >
+                          <legend
+                            class="PrivateNotchedOutline-legend-1321"
+                            style="width: 0.01px;"
+                          >
+                            <span>
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <textarea
+                          aria-invalid="false"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          id="SessionDescriptionInput"
+                          rows="1"
+                        />
+                        <textarea
+                          aria-hidden="true"
+                          class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
+                          readonly=""
+                          style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; width: 100%;"
+                          tabindex="-1"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="MuiGrid-root MuiGrid-item"
+                  >
+                    <button
+                      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-fullWidth"
+                      tabindex="0"
+                      type="submit"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Hinzufügen
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          role="presentation"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

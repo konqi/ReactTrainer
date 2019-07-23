@@ -2,12 +2,8 @@
 
 exports[`snapshot tests should render time select for future dates 1`] = `
 <body>
-  <div />
-  <div />
   <div>
-    <form
-      role="form"
-    >
+    <form>
       <div
         class="MuiGrid-root makeStyles-center-403 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
       >
@@ -20,7 +16,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
               data-shrink="true"
-              for="TrainingDateInput"
+              for="SessionDateInput"
             >
               Datum
             </label>
@@ -44,7 +40,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                id="TrainingDateInput"
+                id="SessionDateInput"
                 type="date"
                 value="2069-07-22"
               />
@@ -60,7 +56,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
               data-shrink="true"
-              for="TrainingTimeInput"
+              for="SessionTimeInput"
             >
               Uhrzeit
             </label>
@@ -84,7 +80,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                id="TrainingTimeInput"
+                id="SessionTimeInput"
                 type="time"
                 value="02:37"
               />
@@ -100,7 +96,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
               data-shrink="true"
-              for="TrainingPayedAmountInput"
+              for="SessionPayedAmountInput"
             >
               Bezahlt
             </label>
@@ -124,7 +120,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                id="TrainingPayedAmountInput"
+                id="SessionPayedAmountInput"
                 type="number"
                 value="10"
               />
@@ -140,7 +136,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
               data-shrink="false"
-              for="TrainingDescriptionInput"
+              for="SessionDescriptionInput"
             >
               Beschreibung
             </label>
@@ -164,7 +160,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
               <textarea
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                id="TrainingDescriptionInput"
+                id="SessionDescriptionInput"
                 rows="1"
               />
               <textarea
@@ -214,11 +210,8 @@ exports[`snapshot tests should render time select for future dates 1`] = `
 
 exports[`snapshot tests should render with parameters 1`] = `
 <body>
-  <div />
   <div>
-    <form
-      role="form"
-    >
+    <form>
       <div
         class="MuiGrid-root makeStyles-center-202 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
       >
@@ -231,7 +224,7 @@ exports[`snapshot tests should render with parameters 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
               data-shrink="true"
-              for="TrainingDateInput"
+              for="SessionDateInput"
             >
               Datum
             </label>
@@ -255,7 +248,7 @@ exports[`snapshot tests should render with parameters 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                id="TrainingDateInput"
+                id="SessionDateInput"
                 type="date"
                 value="2069-07-21"
               />
@@ -271,7 +264,7 @@ exports[`snapshot tests should render with parameters 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
               data-shrink="true"
-              for="TrainingPayedAmountInput"
+              for="SessionPayedAmountInput"
             >
               Bezahlt
             </label>
@@ -295,7 +288,7 @@ exports[`snapshot tests should render with parameters 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                id="TrainingPayedAmountInput"
+                id="SessionPayedAmountInput"
                 type="number"
                 value="10"
               />
@@ -311,7 +304,7 @@ exports[`snapshot tests should render with parameters 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
               data-shrink="false"
-              for="TrainingDescriptionInput"
+              for="SessionDescriptionInput"
             >
               Beschreibung
             </label>
@@ -335,7 +328,7 @@ exports[`snapshot tests should render with parameters 1`] = `
               <textarea
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                id="TrainingDescriptionInput"
+                id="SessionDescriptionInput"
                 rows="1"
               />
               <textarea
@@ -386,9 +379,7 @@ exports[`snapshot tests should render with parameters 1`] = `
 exports[`snapshot tests should render without parameters 1`] = `
 <body>
   <div>
-    <form
-      role="form"
-    >
+    <form>
       <div
         class="MuiGrid-root makeStyles-center-1 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
       >
@@ -401,7 +392,7 @@ exports[`snapshot tests should render without parameters 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
               data-shrink="true"
-              for="TrainingDateInput"
+              for="SessionDateInput"
             >
               Datum
             </label>
@@ -425,7 +416,7 @@ exports[`snapshot tests should render without parameters 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                id="TrainingDateInput"
+                id="SessionDateInput"
                 type="date"
                 value="2069-07-21"
               />
@@ -441,7 +432,7 @@ exports[`snapshot tests should render without parameters 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
               data-shrink="true"
-              for="TrainingPayedAmountInput"
+              for="SessionPayedAmountInput"
             >
               Bezahlt
             </label>
@@ -465,7 +456,7 @@ exports[`snapshot tests should render without parameters 1`] = `
               <input
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input"
-                id="TrainingPayedAmountInput"
+                id="SessionPayedAmountInput"
                 type="number"
                 value="0"
               />
@@ -481,7 +472,7 @@ exports[`snapshot tests should render without parameters 1`] = `
             <label
               class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
               data-shrink="false"
-              for="TrainingDescriptionInput"
+              for="SessionDescriptionInput"
             >
               Beschreibung
             </label>
@@ -505,7 +496,7 @@ exports[`snapshot tests should render without parameters 1`] = `
               <textarea
                 aria-invalid="false"
                 class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline MuiOutlinedInput-inputMultiline"
-                id="TrainingDescriptionInput"
+                id="SessionDescriptionInput"
                 rows="1"
               />
               <textarea

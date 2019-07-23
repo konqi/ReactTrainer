@@ -1,4 +1,4 @@
 export {
-  createAddSessionAction as createAddTrainingAction,
+  createIngestSessionAction as createAddTrainingAction,
 } from './sessionActions'
 export {initialSessionState, reduceSessions} from './sessionReducer'

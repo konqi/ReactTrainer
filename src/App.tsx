@@ -14,17 +14,19 @@ import {
   CalendarToday as CalendarIcon,
   Money as MoneyIcon,
   People as PeopleIcon,
-  PersonAdd as PersonAddIcon,
 } from '@material-ui/icons'
-import React from 'react'
-import {Provider, useSelector, useDispatch} from 'react-redux'
+import React, {useEffect} from 'react'
+import {Provider, useDispatch, useSelector} from 'react-redux'
 import './App.css'
 import {ApplicationState, store} from './state'
+import {
+  createShowTraineeDetailsIntend,
+  createShowTraineesIntend,
+} from './state/intends/UserIntend'
 import {UiState} from './state/ui/types'
+import {createUiNavigateAction} from './state/ui/uiActions'
 import {CreateTrainee, TraineeDetails, TraineeList} from './trainee'
 import {Page} from './types/page'
-import {createUiNavigateAction} from './state/ui/uiActions'
-import {createShowTraineesIntend} from './state/intends/UserIntend'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +39,11 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100vh',
     },
     body: {
+      display: 'flex',
+      position: 'relative',
+      flexDirection: 'column',
       flexGrow: 1,
+      overflowX: 'auto',
     },
     title: {},
   })
@@ -56,6 +62,22 @@ const App: React.FC = () => {
         return dispatch(createUiNavigateAction(value))
     }
   }
+
+  const {page} = ui
+  const {pathname, search} = window.location
+  useEffect(() => {
+    if (typeof page === 'undefined') {
+      if (/^\/trainees/.test(pathname)) {
+        dispatch(createShowTraineesIntend())
+      } else if (/^\/trainee/.test(pathname)) {
+        const params: {[key: string]: string} = {}
+        new URLSearchParams(search).forEach((value: string, key: string) => {
+          params[key] = value
+        })
+        dispatch(createShowTraineeDetailsIntend(params.traineeId))
+      }
+    }
+  }, [page, pathname, search, dispatch])
 
   return (
     <React.Fragment>
@@ -81,11 +103,6 @@ const App: React.FC = () => {
               label="Personen"
               icon={<PeopleIcon />}
               value={Page.Trainees}
-            />
-            <BottomNavigationAction
-              label="Person anlegen"
-              icon={<PersonAddIcon />}
-              value={Page.Create}
             />
             <BottomNavigationAction
               label="Finanzen"

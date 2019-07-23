@@ -1,30 +1,22 @@
-import {fireEvent, render} from '@testing-library/react'
+import {fireEvent, render, cleanup} from '@testing-library/react'
 import * as React from 'react'
-import {NewTraining} from './NewTraining'
-
-const OriginalDate = global.Date
+import {NewSession} from './NewSession'
+import {freezeTime, restoreCausality} from '../__mocks__/date'
 
 describe('snapshot tests', () => {
   beforeAll(() => {
     // @ts-ignore
-    global.Date = class extends OriginalDate {
-      constructor(datetime?: number) {
-        super(datetime || 3141592653589)
-        return this
-      }
-
-      static now() {
-        return 3141592653589
-      }
-    }
+    global.Date = freezeTime(3141592653589)
   })
 
   afterAll(() => {
-    global.Date = OriginalDate
+    global.Date = restoreCausality()
   })
 
+  afterEach(cleanup)
+
   it('should render without parameters', () => {
-    const {baseElement, unmount} = render(<NewTraining />)
+    const {baseElement, unmount} = render(<NewSession />)
     expect(baseElement).toMatchSnapshot()
     unmount()
   })
@@ -34,7 +26,7 @@ describe('snapshot tests', () => {
     const description = ''
     const payedAmount = 10
     const {baseElement, unmount} = render(
-      <NewTraining {...{datetime, description, payedAmount}} />
+      <NewSession {...{datetime, description, payedAmount}} />
     )
     expect(baseElement).toMatchSnapshot()
     unmount()
@@ -45,7 +37,7 @@ describe('snapshot tests', () => {
     const description = ''
     const payedAmount = 10
     const {baseElement, unmount} = render(
-      <NewTraining {...{datetime, description, payedAmount}} />
+      <NewSession {...{datetime, description, payedAmount}} />
     )
     expect(baseElement).toMatchSnapshot()
     unmount()
@@ -55,36 +47,28 @@ describe('snapshot tests', () => {
 describe('integration tests', () => {
   beforeAll(() => {
     // @ts-ignore
-    global.Date = class extends OriginalDate {
-      constructor(datetime?: number) {
-        super(datetime || 3141592653589)
-        return this
-      }
-
-      static now() {
-        return 3141592653589
-      }
-    }
+    global.Date = freezeTime(3141592653589)
   })
 
   afterAll(() => {
-    global.Date = OriginalDate
+    global.Date = restoreCausality()
   })
+
+  afterEach(cleanup)
 
   it('should update datetime according to date input change', () => {
     const mockFn = jest.fn()
     const {getByLabelText, unmount} = render(
-      <NewTraining onDatetimeChange={mockFn} />
+      <NewSession onChange={mockFn} datetime={new Date(0)} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
     fireEvent.change(getByLabelText('Datum'), {target: {value: '3333-11-22'}})
-    const expectedDateTime = new Date()
+    const expectedDateTime = new Date(0)
     expectedDateTime.setFullYear(3333)
     expectedDateTime.setMonth(10)
     expectedDateTime.setDate(22)
-    expect(mockFn).toHaveBeenCalled()
-    expect(mockFn.mock.calls[0][0] as Date).toEqual(expectedDateTime)
+    expect(mockFn).toHaveBeenCalledWith('date', expectedDateTime)
 
     unmount()
   })
@@ -94,7 +78,7 @@ describe('integration tests', () => {
 
     const future = new Date(Date.now() + 24 * 60 ** 2 * 1000) // tomorrow
     const {getByLabelText, unmount} = render(
-      <NewTraining datetime={future} onDatetimeChange={mockFn} />
+      <NewSession datetime={future} onChange={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
@@ -104,7 +88,7 @@ describe('integration tests', () => {
     expectedDateTime.setMinutes(21)
     expectedDateTime.setSeconds(0)
     expectedDateTime.setMilliseconds(0)
-    expect(mockFn.mock.calls[0][0] as Date).toEqual(expectedDateTime)
+    expect(mockFn).toHaveBeenCalledWith('time', expectedDateTime)
 
     unmount()
   })
@@ -112,15 +96,14 @@ describe('integration tests', () => {
   it('should update description', () => {
     const mockFn = jest.fn()
     const {getByLabelText, getByText, unmount} = render(
-      <NewTraining onDescriptionChange={mockFn} />
+      <NewSession onChange={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
     fireEvent.change(getByLabelText('Beschreibung'), {
       target: {value: 'Hello World!'},
     })
-    expect(mockFn).toHaveBeenCalled()
-    expect(mockFn.mock.calls[0][0]).toEqual('Hello World!')
+    expect(mockFn).toHaveBeenCalledWith('description', 'Hello World!')
 
     unmount()
   })
@@ -128,13 +111,12 @@ describe('integration tests', () => {
   it('should update payed amount', () => {
     const mockFn = jest.fn()
     const {getByLabelText, getByText, unmount} = render(
-      <NewTraining onPayedAmountChange={mockFn} />
+      <NewSession onChange={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()
     fireEvent.change(getByLabelText('Bezahlt'), {target: {value: '10'}})
-    expect(mockFn).toHaveBeenCalled()
-    expect(mockFn.mock.calls[0][0]).toBe(10)
+    expect(mockFn).toHaveBeenCalledWith('payedAmount', 10)
 
     unmount()
   })
@@ -142,7 +124,7 @@ describe('integration tests', () => {
   it('should fire submit callback', () => {
     const mockFn = jest.fn()
     const {getByLabelText, getByText, getByRole, unmount} = render(
-      <NewTraining onSubmit={mockFn} />
+      <NewSession onSubmit={mockFn} />
     )
 
     expect(mockFn).not.toHaveBeenCalled()

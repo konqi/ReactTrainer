@@ -3,10 +3,22 @@ import * as React from 'react'
 import * as ReactRedux from 'react-redux'
 import {Provider} from 'react-redux'
 import {store} from '../state'
-import {createAddTraineeAction} from '../state/trainees'
+import {createAddTraineeIntend} from '../state/intends/UserIntend'
 import {CreateTrainee} from './CreateTrainee'
 
-describe('snapshot tests', () => {
+it('snapshot test', () => {
+  const {baseElement, unmount} = render(
+    <Provider store={store}>
+      <CreateTrainee />
+    </Provider>
+  )
+
+  expect(baseElement).toMatchSnapshot()
+
+  unmount()
+})
+
+describe('integration tests', () => {
   let dispatch = jest.fn()
   let useDispatch: any
   beforeEach(() => {
@@ -39,7 +51,7 @@ describe('snapshot tests', () => {
     fireEvent.click(getByText('Anlegen'))
 
     expect(dispatch).toHaveBeenCalledWith(
-      createAddTraineeAction({name: expectedName, price: expectedPrice})
+      createAddTraineeIntend({name: expectedName, price: expectedPrice})
     )
 
     unmount()
@@ -47,27 +59,29 @@ describe('snapshot tests', () => {
 })
 
 describe('unit tests', () => {
-  it('should handle bad inputs nicely', () => {
-    const {getByLabelText, unmount} = render(
-      <Provider store={store}>
-        <CreateTrainee />
-      </Provider>
-    )
-    const priceInput = getByLabelText('Preis') as HTMLInputElement
+  test.each`
+    input     | expected
+    ${'4711'} | ${'4711'}
+    ${'ABC'}  | ${''}
+    ${'!'}    | ${''}
+    ${'0'}    | ${''}
+    ${'0815'} | ${'815'}
+  `(
+    'when input is "$input" output should be "$expected"',
+    ({input, expected}) => {
+      const {getByLabelText, unmount} = render(
+        <Provider store={store}>
+          <CreateTrainee />
+        </Provider>
+      )
+      const priceInput = getByLabelText('Preis') as HTMLInputElement
 
-    const validValue = '4711'
-    fireEvent.change(priceInput, {
-      target: {value: validValue},
-    })
-    expect(priceInput.value).toBe(validValue)
+      fireEvent.change(priceInput, {
+        target: {value: input},
+      })
+      expect(priceInput.value).toBe(expected)
 
-    const invalidValue = 'ABC'
-    fireEvent.change(priceInput, {
-      target: {value: invalidValue},
-    })
-
-    expect(priceInput.value).toBe(validValue)
-
-    unmount()
-  })
+      unmount()
+    }
+  )
 })

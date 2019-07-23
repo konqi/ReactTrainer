@@ -7,14 +7,16 @@ import {
   Theme,
 } from '@material-ui/core'
 import {grey} from '@material-ui/core/colors'
-import React, {useState, useEffect} from 'react'
+import React, {useMemo, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import {ApplicationState} from '../state'
 import {createAddTrainingIntend} from '../state/intends/UserIntend'
+import {findFirstBeforeAndAfterDate, Session} from '../types/Session'
 import {Trainee} from '../types/Trainee'
-import {NewTraining} from './NewTraining'
+import {NewSession} from './NewSession'
 import {TrainingEntry} from './TrainingEntry'
-import {Session} from '../types/Session'
+import {TraineeBalance} from './TraineeBalance'
+import {TraineeHistory} from './TraineeHistory'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,6 +55,7 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
     {sessions: Session[] | undefined}
   >(state => {
     const sessions =
+      state.trainees[traineeId] &&
       state.trainees[traineeId].sessionsRef &&
       state.trainees[traineeId].sessionsRef!.map(
         (sessionRef: string) => state.sessions[sessionRef]
@@ -60,15 +63,17 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
     // TODO add next & previous session
     return {sessions, nextSession: undefined, previousSession: undefined}
   })
+  const price = (trainee && trainee.price) || 0
   const dispatch = useDispatch()
   const [datetime, setDatetime] = useState(new Date())
   const [description, setDescription] = useState('')
-  const [payedAmount, setPayedAmount] = useState(0)
+  const [payedAmount, setPayedAmount] = useState(price)
   const classes = useStyles()
 
-  useEffect(() => {
-    setPayedAmount(trainee!.price)
-  }, [trainee!.price])
+  const {previousSession, upcomingSession} = useMemo(
+    () => findFirstBeforeAndAfterDate(new Date(), sessions),
+    [sessions]
+  )
 
   const addNewTraining = () => {
     if (trainee) {
@@ -84,43 +89,60 @@ export const TraineeDetails: React.FC<ExternalProps> = ({traineeId}) => {
       )
     }
   }
-  console.log(sessions)
+
+  const handleChange = (
+    propertyName: string,
+    value: number | string | Date
+  ) => {
+    switch (propertyName) {
+      case 'date':
+      case 'time':
+        return setDatetime(value as Date)
+      case 'payedAmount':
+        return setPayedAmount(value as number)
+      case 'description':
+        return setDescription(value as string)
+    }
+  }
 
   return (
     <Container className={classes.root}>
-      {/* <Paper className={classes.root}>
-        <Typography variant="h5" component="h3">
-          {trainee!.name}
-        </Typography>
-      </Paper> */}
       <Paper>
         <Container>
           <Grid container spacing={3}>
             <Grid item xs={4} className={classes.calendar}>
-              {sessions && <TrainingEntry date={sessions[0].datetime} />}
+              letztes mal
+              {previousSession && (
+                <TrainingEntry date={previousSession.datetime} />
+              )}
             </Grid>
             <Grid item xs={4} className={classes.current}>
+              aktuell
               <TrainingEntry date={datetime} />
             </Grid>
             <Grid item xs={4} className={classes.calendar}>
-              {/* <TrainingEntry date={new Date(1568029414613)} /> */}
+              nächstes mal
+              {upcomingSession && (
+                <TrainingEntry date={upcomingSession.datetime} />
+              )}
             </Grid>
           </Grid>
           <Grid container>
             <Grid item xs={12} className={classes.form}>
-              <NewTraining
+              <NewSession
                 datetime={datetime}
-                onDatetimeChange={setDatetime}
                 payedAmount={payedAmount}
-                onPayedAmountChange={setPayedAmount}
                 description={description}
-                onDescriptionChange={setDescription}
+                onChange={handleChange}
                 onSubmit={addNewTraining}
               />
             </Grid>
           </Grid>
         </Container>
       </Paper>
+
+      <TraineeBalance traineeId={traineeId} />
+      <TraineeHistory traineeId={traineeId} />
     </Container>
   )
 }

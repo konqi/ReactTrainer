@@ -1,7 +1,5 @@
 export {reduceTrainees, initialTraineeState} from './traineeReducer'
 export {
   TraineeActions,
-  createAddTraineeAction,
-  createRemoveTraineeAction,
-  createOpenTraineeAction,
+  createIngestTraineeAction as createAddTraineeAction,
 } from './traineeActions'

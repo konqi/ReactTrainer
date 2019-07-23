@@ -1,24 +1,23 @@
-import {put, takeEvery} from '@redux-saga/core/effects'
-import {Page} from '../../types/page'
-import {UserIntend, ShowTraineeDetailsIntendFSA} from '../intends/UserIntend'
-import {createUiNavigateAction} from '../ui/uiActions'
-import {OpenTraineeFSA} from '../trainees/traineeActions'
+import {takeEvery} from '@redux-saga/core/effects'
+import {createBrowserHistory} from 'history'
+import {UiActions, UiNavigationFSA} from '../ui/uiActions'
+
+const history = createBrowserHistory()
 
 export function* uiSagas() {
-  yield takeEvery(UserIntend.SHOW_TRAINEES, openTraineesView)
-  yield takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, openTraineeDetailsView)
+  yield takeEvery(UiActions.NAVIGATE, updateBrowserHistory)
 }
 
-function* openTraineesView() {
-  yield put(createUiNavigateAction(Page.Trainees))
-}
-
-function* openTraineeDetailsView(action: ShowTraineeDetailsIntendFSA) {
-  if (action.payload) {
-    yield put(
-      createUiNavigateAction(Page.Trainee, {traineeId: action.payload!})
+function* updateBrowserHistory(action: UiNavigationFSA) {
+  const {page, params} = action.payload!
+  // yield console.log(page, params)
+  if (params) {
+    yield history.push(
+      `${page}?${Object.keys(params!)
+        .map(key => `${key}=${params[key]}`)
+        .join()}`
     )
   } else {
-    // yield some error?
+    yield history.push(page)
   }
 }
