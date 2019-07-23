@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot tests renders properly with negative balance 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-68 MuiPaper-rounded"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          Kontostand: 
+          <span
+            class="makeStyles-negativeBalance-69"
+          >
+            -1
+             €
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`snapshot tests renders properly with positive balance 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          Kontostand: 
+          <span
+            class="makeStyles-positiveBalance-3"
+          >
+            1
+             €
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`snapshot tests renders properly with zero balance 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-135 MuiPaper-rounded"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          Kontostand: 
+          <span>
+            0
+             €
+          </span>
+        </h5>
+      </div>
+    </div>
+  </div>
+</body>
+`;

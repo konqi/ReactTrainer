@@ -14,27 +14,12 @@ import {ApplicationState} from '../state'
 import {Session} from '../types/Session'
 import {Trainee} from '../types/Trainee'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      margin: theme.spacing(1, 0),
-    },
-    negativeBalance: {
-      color: red[400],
-    },
-    positiveBalance: {
-      color: green[400],
-    },
-  })
-)
-
 interface ExternalProps {
   traineeId: string
 }
-export const TraineeBalance: React.FC<ExternalProps> = ({
+export const TraineeBalanceConnected: React.FC<ExternalProps> = ({
   traineeId,
 }: ExternalProps) => {
-  const classes = useStyles()
   const trainee = useSelector<ApplicationState, Trainee>(
     state => state.trainees[traineeId]
   )
@@ -57,6 +42,28 @@ export const TraineeBalance: React.FC<ExternalProps> = ({
     [sessions, trainee]
   )
 
+  return <TraineeBalance totalBalance={totalBalance} />
+}
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      margin: theme.spacing(1, 0),
+    },
+    negativeBalance: {
+      color: red[400],
+    },
+    positiveBalance: {
+      color: green[400],
+    },
+  })
+)
+
+export const TraineeBalance: React.FC<{totalBalance: number}> = ({
+  totalBalance,
+}) => {
+  const classes = useStyles()
+
   const balanceClass = (balance: number) => {
     if (balance > 0) {
       return classes.positiveBalance
@@ -69,8 +76,8 @@ export const TraineeBalance: React.FC<ExternalProps> = ({
     <Paper className={classes.root}>
       <Container>
         <Typography variant="h5">
-          Kontostand:
-          <span className={balanceClass(totalBalance)}> {totalBalance} €</span>
+          Kontostand:&nbsp;
+          <span className={balanceClass(totalBalance)}>{totalBalance} €</span>
         </Typography>
       </Container>
     </Paper>

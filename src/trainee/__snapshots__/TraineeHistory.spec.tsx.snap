@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integration tests renders table with session data from store 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-89 MuiPaper-rounded"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          Historie
+        </h5>
+        <table
+          class="MuiTable-root"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                scope="col"
+              >
+                Datum
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                scope="col"
+              >
+                Preis
+              </th>
+              <th
+                class="MuiTableCell-root makeStyles-payedColumn-93 MuiTableCell-head"
+                scope="col"
+              >
+                Gezahlt (Differenz)
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                23.7.19
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root makeStyles-payedColumn-93 MuiTableCell-body"
+              >
+                5
+                <span
+                  class="makeStyles-negativeBalance-90 makeStyles-pullRight-92"
+                >
+                  (
+                  -5
+                  )
+                </span>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                23.7.19
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root makeStyles-payedColumn-93 MuiTableCell-body"
+              >
+                10
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                23.7.19
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root makeStyles-payedColumn-93 MuiTableCell-body"
+              >
+                15
+                <span
+                  class="makeStyles-positiveBalance-91 makeStyles-pullRight-92"
+                >
+                  (
+                  5
+                  )
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`snapshot tests renders table with sessions 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg"
+      >
+        <h5
+          class="MuiTypography-root MuiTypography-h5"
+        >
+          Historie
+        </h5>
+        <table
+          class="MuiTable-root"
+        >
+          <thead
+            class="MuiTableHead-root"
+          >
+            <tr
+              class="MuiTableRow-root MuiTableRow-head"
+            >
+              <th
+                class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                scope="col"
+              >
+                Datum
+              </th>
+              <th
+                class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                scope="col"
+              >
+                Preis
+              </th>
+              <th
+                class="MuiTableCell-root makeStyles-payedColumn-5 MuiTableCell-head"
+                scope="col"
+              >
+                Gezahlt (Differenz)
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="MuiTableBody-root"
+          >
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                23.7.19
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root makeStyles-payedColumn-5 MuiTableCell-body"
+              >
+                5
+                <span
+                  class="makeStyles-negativeBalance-2 makeStyles-pullRight-4"
+                >
+                  (
+                  -5
+                  )
+                </span>
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                23.7.19
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root makeStyles-payedColumn-5 MuiTableCell-body"
+              >
+                10
+              </td>
+            </tr>
+            <tr
+              class="MuiTableRow-root"
+            >
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                23.7.19
+              </td>
+              <td
+                class="MuiTableCell-root MuiTableCell-body"
+              >
+                10
+              </td>
+              <td
+                class="MuiTableCell-root makeStyles-payedColumn-5 MuiTableCell-body"
+              >
+                15
+                <span
+                  class="makeStyles-positiveBalance-3 makeStyles-pullRight-4"
+                >
+                  (
+                  5
+                  )
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+`;
