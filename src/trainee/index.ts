@@ -1,3 +1,5 @@
 export {TraineeList} from './TraineeList'
 export {CreateTrainee} from './CreateTrainee'
 export {TraineeDetails} from './TraineeDetails'
+export {TraineeHistoryConnected as TraineeHistory} from './TraineeHistory'
+export {TraineeBalanceConnected as TraineeBalance} from './TraineeBalance'

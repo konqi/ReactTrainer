@@ -430,8 +430,8 @@ exports[`snapshot tests should render without parameters 1`] = `
             class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
           >
             <label
-              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-              data-shrink="true"
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+              data-shrink="false"
               for="SessionPayedAmountInput"
             >
               Bezahlt
@@ -446,7 +446,7 @@ exports[`snapshot tests should render without parameters 1`] = `
               >
                 <legend
                   class="PrivateNotchedOutline-legend-162"
-                  style="width: 0px;"
+                  style="width: 0.01px;"
                 >
                   <span>
                     ​
@@ -458,7 +458,7 @@ exports[`snapshot tests should render without parameters 1`] = `
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 id="SessionPayedAmountInput"
                 type="number"
-                value="0"
+                value=""
               />
             </div>
           </div>

@@ -17,10 +17,13 @@ exports[`snapshot tests with no other session 1`] = `
           >
             <div
               class="MuiGrid-root makeStyles-calendar-2 MuiGrid-item MuiGrid-grid-xs-4"
-            />
+            >
+              letztes mal
+            </div>
             <div
               class="MuiGrid-root makeStyles-current-3 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              aktuell
               <div
                 class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-142 MuiPaper-rounded"
               >
@@ -46,7 +49,9 @@ exports[`snapshot tests with no other session 1`] = `
             </div>
             <div
               class="MuiGrid-root makeStyles-calendar-2 MuiGrid-item MuiGrid-grid-xs-4"
-            />
+            >
+              nächstes mal
+            </div>
           </div>
           <div
             class="MuiGrid-root MuiGrid-container"
@@ -219,6 +224,69 @@ exports[`snapshot tests with no other session 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-263 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Kontostand: 
+            <span>
+              0
+               €
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-266 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Historie
+          </h5>
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Datum
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Preis
+                </th>
+                <th
+                  class="MuiTableCell-root makeStyles-payedColumn-270 MuiTableCell-head"
+                  scope="col"
+                >
+                  Gezahlt (Differenz)
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            />
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </body>
@@ -228,7 +296,7 @@ exports[`snapshot tests with session in future 1`] = `
 <body>
   <div>
     <div
-      class="MuiContainer-root makeStyles-root-545 MuiContainer-maxWidthLg"
+      class="MuiContainer-root makeStyles-root-599 MuiContainer-maxWidthLg"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
@@ -240,19 +308,22 @@ exports[`snapshot tests with session in future 1`] = `
             class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
           >
             <div
-              class="MuiGrid-root makeStyles-calendar-546 MuiGrid-item MuiGrid-grid-xs-4"
-            />
-            <div
-              class="MuiGrid-root makeStyles-current-547 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-calendar-600 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              letztes mal
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-current-601 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              aktuell
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-686 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-740 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-687 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-741 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-688 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-742 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -269,16 +340,17 @@ exports[`snapshot tests with session in future 1`] = `
               </div>
             </div>
             <div
-              class="MuiGrid-root makeStyles-calendar-546 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-calendar-600 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              nächstes mal
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-686 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-740 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-687 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-741 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-688 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-742 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -299,11 +371,11 @@ exports[`snapshot tests with session in future 1`] = `
             class="MuiGrid-root MuiGrid-container"
           >
             <div
-              class="MuiGrid-root makeStyles-form-548 MuiGrid-item MuiGrid-grid-xs-12"
+              class="MuiGrid-root makeStyles-form-602 MuiGrid-item MuiGrid-grid-xs-12"
             >
               <form>
                 <div
-                  class="MuiGrid-root makeStyles-center-719 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-center-773 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
                 >
                   <div
                     class="MuiGrid-root MuiGrid-item"
@@ -323,11 +395,11 @@ exports[`snapshot tests with session in future 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-776 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-830 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-777"
+                            class="PrivateNotchedOutline-legend-831"
                             style="width: 0px;"
                           >
                             <span>
@@ -363,11 +435,11 @@ exports[`snapshot tests with session in future 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-776 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-830 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-777"
+                            class="PrivateNotchedOutline-legend-831"
                             style="width: 0px;"
                           >
                             <span>
@@ -403,11 +475,11 @@ exports[`snapshot tests with session in future 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-776 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-830 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-777"
+                            class="PrivateNotchedOutline-legend-831"
                             style="width: 0.01px;"
                           >
                             <span>
@@ -466,6 +538,89 @@ exports[`snapshot tests with session in future 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-861 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Kontostand: 
+            <span>
+              0
+               €
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-864 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Historie
+          </h5>
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Datum
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Preis
+                </th>
+                <th
+                  class="MuiTableCell-root makeStyles-payedColumn-868 MuiTableCell-head"
+                  scope="col"
+                >
+                  Gezahlt (Differenz)
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            >
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  23.7.69
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  15
+                </td>
+                <td
+                  class="MuiTableCell-root makeStyles-payedColumn-868 MuiTableCell-body"
+                >
+                  15
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </body>
@@ -475,7 +630,7 @@ exports[`snapshot tests with session in past 1`] = `
 <body>
   <div>
     <div
-      class="MuiContainer-root makeStyles-root-273 MuiContainer-maxWidthLg"
+      class="MuiContainer-root makeStyles-root-300 MuiContainer-maxWidthLg"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
@@ -487,16 +642,17 @@ exports[`snapshot tests with session in past 1`] = `
             class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
           >
             <div
-              class="MuiGrid-root makeStyles-calendar-274 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-calendar-301 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              letztes mal
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-414 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-441 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-415 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-442 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-416 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-443 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -513,16 +669,17 @@ exports[`snapshot tests with session in past 1`] = `
               </div>
             </div>
             <div
-              class="MuiGrid-root makeStyles-current-275 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-current-302 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              aktuell
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-414 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-441 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-415 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-442 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-416 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-443 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -539,18 +696,20 @@ exports[`snapshot tests with session in past 1`] = `
               </div>
             </div>
             <div
-              class="MuiGrid-root makeStyles-calendar-274 MuiGrid-item MuiGrid-grid-xs-4"
-            />
+              class="MuiGrid-root makeStyles-calendar-301 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              nächstes mal
+            </div>
           </div>
           <div
             class="MuiGrid-root MuiGrid-container"
           >
             <div
-              class="MuiGrid-root makeStyles-form-276 MuiGrid-item MuiGrid-grid-xs-12"
+              class="MuiGrid-root makeStyles-form-303 MuiGrid-item MuiGrid-grid-xs-12"
             >
               <form>
                 <div
-                  class="MuiGrid-root makeStyles-center-447 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-center-474 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
                 >
                   <div
                     class="MuiGrid-root MuiGrid-item"
@@ -570,11 +729,11 @@ exports[`snapshot tests with session in past 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-504 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-531 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-505"
+                            class="PrivateNotchedOutline-legend-532"
                             style="width: 0px;"
                           >
                             <span>
@@ -610,11 +769,11 @@ exports[`snapshot tests with session in past 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-504 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-531 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-505"
+                            class="PrivateNotchedOutline-legend-532"
                             style="width: 0px;"
                           >
                             <span>
@@ -650,11 +809,11 @@ exports[`snapshot tests with session in past 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-504 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-531 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-505"
+                            class="PrivateNotchedOutline-legend-532"
                             style="width: 0.01px;"
                           >
                             <span>
@@ -713,6 +872,89 @@ exports[`snapshot tests with session in past 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-562 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Kontostand: 
+            <span>
+              0
+               €
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-565 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Historie
+          </h5>
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Datum
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Preis
+                </th>
+                <th
+                  class="MuiTableCell-root makeStyles-payedColumn-569 MuiTableCell-head"
+                  scope="col"
+                >
+                  Gezahlt (Differenz)
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            >
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  1.1.70
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  15
+                </td>
+                <td
+                  class="MuiTableCell-root makeStyles-payedColumn-569 MuiTableCell-body"
+                >
+                  15
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </body>
@@ -722,7 +964,7 @@ exports[`snapshot tests with sessions in past and future 1`] = `
 <body>
   <div>
     <div
-      class="MuiContainer-root makeStyles-root-817 MuiContainer-maxWidthLg"
+      class="MuiContainer-root makeStyles-root-898 MuiContainer-maxWidthLg"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
@@ -734,16 +976,17 @@ exports[`snapshot tests with sessions in past and future 1`] = `
             class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
           >
             <div
-              class="MuiGrid-root makeStyles-calendar-818 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-calendar-899 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              letztes mal
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-958 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1039 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-959 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-1040 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-960 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-1041 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -760,16 +1003,17 @@ exports[`snapshot tests with sessions in past and future 1`] = `
               </div>
             </div>
             <div
-              class="MuiGrid-root makeStyles-current-819 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-current-900 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              aktuell
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-958 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1039 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-959 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-1040 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-960 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-1041 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -786,16 +1030,17 @@ exports[`snapshot tests with sessions in past and future 1`] = `
               </div>
             </div>
             <div
-              class="MuiGrid-root makeStyles-calendar-818 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-calendar-899 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              nächstes mal
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-958 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1039 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-959 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-1040 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-960 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-1041 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -816,11 +1061,11 @@ exports[`snapshot tests with sessions in past and future 1`] = `
             class="MuiGrid-root MuiGrid-container"
           >
             <div
-              class="MuiGrid-root makeStyles-form-820 MuiGrid-item MuiGrid-grid-xs-12"
+              class="MuiGrid-root makeStyles-form-901 MuiGrid-item MuiGrid-grid-xs-12"
             >
               <form>
                 <div
-                  class="MuiGrid-root makeStyles-center-991 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-center-1072 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
                 >
                   <div
                     class="MuiGrid-root MuiGrid-item"
@@ -840,11 +1085,11 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-1048 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-1129 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-1049"
+                            class="PrivateNotchedOutline-legend-1130"
                             style="width: 0px;"
                           >
                             <span>
@@ -880,11 +1125,11 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-1048 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-1129 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-1049"
+                            class="PrivateNotchedOutline-legend-1130"
                             style="width: 0px;"
                           >
                             <span>
@@ -920,11 +1165,11 @@ exports[`snapshot tests with sessions in past and future 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-1048 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-1129 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-1049"
+                            class="PrivateNotchedOutline-legend-1130"
                             style="width: 0.01px;"
                           >
                             <span>
@@ -983,6 +1228,108 @@ exports[`snapshot tests with sessions in past and future 1`] = `
           </div>
         </div>
       </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1160 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Kontostand: 
+            <span>
+              0
+               €
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1163 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Historie
+          </h5>
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Datum
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Preis
+                </th>
+                <th
+                  class="MuiTableCell-root makeStyles-payedColumn-1167 MuiTableCell-head"
+                  scope="col"
+                >
+                  Gezahlt (Differenz)
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            >
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  23.7.69
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  15
+                </td>
+                <td
+                  class="MuiTableCell-root makeStyles-payedColumn-1167 MuiTableCell-body"
+                >
+                  15
+                </td>
+              </tr>
+              <tr
+                class="MuiTableRow-root"
+              >
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  19.7.69
+                </td>
+                <td
+                  class="MuiTableCell-root MuiTableCell-body"
+                >
+                  15
+                </td>
+                <td
+                  class="MuiTableCell-root makeStyles-payedColumn-1167 MuiTableCell-body"
+                >
+                  15
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </body>
@@ -992,7 +1339,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
 <body>
   <div>
     <div
-      class="MuiContainer-root makeStyles-root-1089 MuiContainer-maxWidthLg"
+      class="MuiContainer-root makeStyles-root-1197 MuiContainer-maxWidthLg"
     >
       <div
         class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
@@ -1004,19 +1351,22 @@ exports[`snapshot tests with trainee missing in store 1`] = `
             class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
           >
             <div
-              class="MuiGrid-root makeStyles-calendar-1090 MuiGrid-item MuiGrid-grid-xs-4"
-            />
-            <div
-              class="MuiGrid-root makeStyles-current-1091 MuiGrid-item MuiGrid-grid-xs-4"
+              class="MuiGrid-root makeStyles-calendar-1198 MuiGrid-item MuiGrid-grid-xs-4"
             >
+              letztes mal
+            </div>
+            <div
+              class="MuiGrid-root makeStyles-current-1199 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              aktuell
               <div
-                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1230 MuiPaper-rounded"
+                class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1338 MuiPaper-rounded"
               >
                 <div
-                  class="MuiGrid-root makeStyles-calendar-1231 MuiGrid-container MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-calendar-1339 MuiGrid-container MuiGrid-direction-xs-column"
                 >
                   <div
-                    class="MuiGrid-root makeStyles-center-1232 MuiGrid-item"
+                    class="MuiGrid-root makeStyles-center-1340 MuiGrid-item"
                   >
                     <span
                       class="MuiTypography-root MuiTypography-h4"
@@ -1033,18 +1383,20 @@ exports[`snapshot tests with trainee missing in store 1`] = `
               </div>
             </div>
             <div
-              class="MuiGrid-root makeStyles-calendar-1090 MuiGrid-item MuiGrid-grid-xs-4"
-            />
+              class="MuiGrid-root makeStyles-calendar-1198 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              nächstes mal
+            </div>
           </div>
           <div
             class="MuiGrid-root MuiGrid-container"
           >
             <div
-              class="MuiGrid-root makeStyles-form-1092 MuiGrid-item MuiGrid-grid-xs-12"
+              class="MuiGrid-root makeStyles-form-1200 MuiGrid-item MuiGrid-grid-xs-12"
             >
               <form>
                 <div
-                  class="MuiGrid-root makeStyles-center-1263 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
+                  class="MuiGrid-root makeStyles-center-1371 MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-direction-xs-column"
                 >
                   <div
                     class="MuiGrid-root MuiGrid-item"
@@ -1064,11 +1416,11 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-1320 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-1428 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-1321"
+                            class="PrivateNotchedOutline-legend-1429"
                             style="width: 0px;"
                           >
                             <span>
@@ -1093,8 +1445,8 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                       class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
                     >
                       <label
-                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
-                        data-shrink="true"
+                        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+                        data-shrink="false"
                         for="SessionPayedAmountInput"
                       >
                         Bezahlt
@@ -1104,12 +1456,12 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-1320 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-1428 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-1321"
-                            style="width: 0px;"
+                            class="PrivateNotchedOutline-legend-1429"
+                            style="width: 0.01px;"
                           >
                             <span>
                               ​
@@ -1121,7 +1473,7 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                           class="MuiInputBase-input MuiOutlinedInput-input"
                           id="SessionPayedAmountInput"
                           type="number"
-                          value="0"
+                          value=""
                         />
                       </div>
                     </div>
@@ -1144,11 +1496,11 @@ exports[`snapshot tests with trainee missing in store 1`] = `
                       >
                         <fieldset
                           aria-hidden="true"
-                          class="PrivateNotchedOutline-root-1320 MuiOutlinedInput-notchedOutline"
+                          class="PrivateNotchedOutline-root-1428 MuiOutlinedInput-notchedOutline"
                           style="padding-left: 8px;"
                         >
                           <legend
-                            class="PrivateNotchedOutline-legend-1321"
+                            class="PrivateNotchedOutline-legend-1429"
                             style="width: 0.01px;"
                           >
                             <span>
@@ -1205,6 +1557,69 @@ exports[`snapshot tests with trainee missing in store 1`] = `
               </form>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1459 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Kontostand: 
+            <span>
+              0
+               €
+            </span>
+          </h5>
+        </div>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1462 MuiPaper-rounded"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg"
+        >
+          <h5
+            class="MuiTypography-root MuiTypography-h5"
+          >
+            Historie
+          </h5>
+          <table
+            class="MuiTable-root"
+          >
+            <thead
+              class="MuiTableHead-root"
+            >
+              <tr
+                class="MuiTableRow-root MuiTableRow-head"
+              >
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Datum
+                </th>
+                <th
+                  class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeSmall"
+                  scope="col"
+                >
+                  Preis
+                </th>
+                <th
+                  class="MuiTableCell-root makeStyles-payedColumn-1466 MuiTableCell-head"
+                  scope="col"
+                >
+                  Gezahlt (Differenz)
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class="MuiTableBody-root"
+            />
+          </table>
         </div>
       </div>
     </div>

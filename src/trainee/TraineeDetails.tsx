@@ -15,8 +15,7 @@ import {findFirstBeforeAndAfterDate, Session} from '../types/Session'
 import {Trainee} from '../types/Trainee'
 import {NewSession} from './NewSession'
 import {TrainingEntry} from './TrainingEntry'
-import {TraineeBalance} from './TraineeBalance'
-import {TraineeHistory} from './TraineeHistory'
+import {TraineeBalance, TraineeHistory} from './'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
