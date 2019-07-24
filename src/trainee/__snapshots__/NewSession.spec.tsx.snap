@@ -82,7 +82,7 @@ exports[`snapshot tests should render time select for future dates 1`] = `
                 class="MuiInputBase-input MuiOutlinedInput-input"
                 id="SessionTimeInput"
                 type="time"
-                value="02:37"
+                value="00:00"
               />
             </div>
           </div>
