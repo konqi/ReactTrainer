@@ -12,3 +12,4 @@ install:
 script:
   - yarn build
   - yarn test
+  - yarn coverage && yarn coveralls
