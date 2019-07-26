@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {TraineeList} from './TraineeList'
+import {TraineeListConnected} from './TraineeList'
 import {render} from '@testing-library/react'
 import {ApplicationState} from '../state'
 import {createStore} from 'redux'
@@ -19,7 +19,7 @@ describe('snapshot tests', () => {
 
     const {baseElement, unmount} = render(
       <Provider store={store}>
-        <TraineeList />
+        <TraineeListConnected />
       </Provider>
     )
 
