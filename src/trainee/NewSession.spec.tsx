@@ -33,7 +33,8 @@ describe('snapshot tests', () => {
   })
 
   it('should render time select for future dates', () => {
-    const datetime = new Date(Date.now() + 24 * 60 ** 2 * 1000) // tomorrow
+    const time = Date.now() + 24 * 60 ** 2 * 1000
+    const datetime = new Date(time - (time % (24 * 60 ** 2 * 1000))) // tomorrow
     const description = ''
     const payedAmount = 10
     const {baseElement, unmount} = render(

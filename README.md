@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/konqi/ReactTrainer.svg?branch=master)](https://travis-ci.org/konqi/ReactTrainer)
+[![Coverage Status](https://coveralls.io/repos/github/konqi/ReactTrainer/badge.svg?branch=master)](https://coveralls.io/github/konqi/ReactTrainer?branch=master)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

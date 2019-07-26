@@ -8,8 +8,17 @@ import {
 } from '../__mocks__/store'
 import {initialApplicationState} from '../state'
 import {Provider} from 'react-redux'
+import {restoreCausality, freezeTime} from '../__mocks__/date'
 
 describe('snapshot tests', () => {
+  beforeAll(() => {
+    // @ts-ignore
+    global.Date = freezeTime(3141592653589)
+  })
+
+  afterAll(() => {
+    global.Date = restoreCausality()
+  })
   afterEach(cleanup)
   it('renders table with sessions', () => {
     const trainee = new TraineeBuilder().withPrice(10).build()
@@ -38,6 +47,14 @@ describe('snapshot tests', () => {
 })
 
 describe('integration tests', () => {
+  beforeAll(() => {
+    // @ts-ignore
+    global.Date = freezeTime(3141592653589)
+  })
+
+  afterAll(() => {
+    global.Date = restoreCausality()
+  })
   afterEach(cleanup)
   it('renders table with session data from store', () => {
     const trainee = new TraineeBuilder().withPrice(10).build()
