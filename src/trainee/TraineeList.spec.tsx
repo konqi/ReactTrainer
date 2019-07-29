@@ -10,6 +10,8 @@ import {
   createShowTraineeDetailsIntend,
   createDeleteTraineeIntend,
 } from '../state/intends/UserIntend'
+import {createUiNavigateAction} from '../state/ui/uiActions'
+import {Page} from '../types/page'
 
 describe('snapshot tests', () => {
   afterEach(cleanup)
@@ -17,7 +19,7 @@ describe('snapshot tests', () => {
     description      | trainees
     ${'no trainee'}  | ${[]}
     ${'one trainee'} | ${[{id: 0, name: 'Tester', price: 1500}]}
-  `('should show TraineeList with $description', ({description, trainees}) => {
+  `('should show TraineeList with $description', ({trainees}) => {
     const state: Pick<ApplicationState, 'trainees'> = {
       trainees,
     }
@@ -52,7 +54,7 @@ describe('integration tests', () => {
     const store = createStore(rootReducer, state)
     const spy = jest.spyOn(store, 'dispatch')
 
-    const {getByText, getByRole, unmount, getAllByTestId} = render(
+    const {getByText, getByLabelText, unmount, getAllByTestId} = render(
       <Provider store={store}>
         <TraineeListConnected />
       </Provider>
@@ -81,6 +83,11 @@ describe('integration tests', () => {
 
     fireEvent.click(getAllByTestId('deleteButton')[1])
     expect(spy).toHaveBeenCalledWith(createDeleteTraineeIntend(trainee2.id))
+
+    spy.mockClear()
+
+    fireEvent.click(getByLabelText('Add'))
+    expect(spy).toHaveBeenCalledWith(createUiNavigateAction(Page.Create))
 
     unmount()
   })
