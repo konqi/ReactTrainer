@@ -152,7 +152,7 @@ const TraineeListRow: React.FC<TraineeListRowProps> = ({
       {price}
     </TableCell>
     <TableCell align="right">
-      <IconButton onClick={deleteTrainee}>
+      <IconButton onClick={deleteTrainee} data-testid="deleteButton">
         <DeleteIcon />
       </IconButton>
     </TableCell>

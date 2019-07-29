@@ -73,7 +73,6 @@ exports[`snapshot tests should show TraineeList with no trainee 1`] = `
 
 exports[`snapshot tests should show TraineeList with one trainee 1`] = `
 <body>
-  <div />
   <div>
     <div
       class="MuiPaper-root MuiPaper-elevation1 makeStyles-root-84 MuiPaper-rounded"
@@ -127,6 +126,7 @@ exports[`snapshot tests should show TraineeList with one trainee 1`] = `
             >
               <button
                 class="MuiButtonBase-root MuiIconButton-root"
+                data-testid="deleteButton"
                 tabindex="0"
                 type="button"
               >
