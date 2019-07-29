@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import {Session} from './types/Session'
 
 export enum DbCollection {
   Trainee = 'trainee',
@@ -31,3 +32,29 @@ export const db = firebase.firestore()
 //     firebase.auth().signInWithRedirect(authProvider)
 //   }
 // }
+
+export const fetchSessionsForTrainee = async (traineeId: string) => {
+  const querySnapshot = await db
+    .collection(DbCollection.Session)
+    .where('traineeRef', '==', traineeId)
+    .get()
+
+  return querySnapshot.docs.map(doc => ({...doc.data, id: doc.id})) as Session[]
+}
+
+export class BatchBuilder {
+  batch: firebase.firestore.WriteBatch
+
+  constructor() {
+    this.batch = db.batch()
+  }
+
+  delete(collection: DbCollection, id: string) {
+    this.batch.delete(db.collection(collection).doc(id))
+    return this
+  }
+
+  async execute() {
+    return await this.batch.commit()
+  }
+}

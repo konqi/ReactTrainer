@@ -1,7 +1,7 @@
-import {call, put, select, takeEvery} from '@redux-saga/core/effects'
+import {call, put, select, takeEvery, all} from '@redux-saga/core/effects'
 import {normalize, NormalizedSchema} from 'normalizr'
 import {ApplicationState} from '..'
-import {db, DbCollection} from '../../db'
+import {db, DbCollection, fetchSessionsForTrainee, BatchBuilder} from '../../db'
 import {Session, sessionSchema} from '../../types/Session'
 import {Trainee} from '../../types/Trainee'
 import {ShowTraineeDetailsIntendFSA} from '../intends/UserIntend'
@@ -16,44 +16,38 @@ import {
 import {createAddTraineeAction} from '../trainees'
 
 export function* sessionSagas() {
-  yield takeEvery(
-    SessionActions.SAVE_SESSION_FOR_TRAINEE,
-    saveSessionForTrainee
-  )
-  // yield takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, fetchTraineeSessions)
-  yield takeEvery(
-    SessionActions.FETCH_SESSIONS_FOR_TRAINEE,
-    fetchTraineeSessions
-  )
-  yield takeEvery(
-    SessionActions.DELETE_SESSIONS_FOR_TRAINEE,
-    deleteSessionsForTrainee
-  )
+  yield all([
+    takeEvery(SessionActions.SAVE_SESSION_FOR_TRAINEE, saveSessionForTrainee),
+    takeEvery(SessionActions.FETCH_SESSIONS_FOR_TRAINEE, fetchTraineeSessions),
+    takeEvery(
+      SessionActions.DELETE_SESSIONS_FOR_TRAINEE,
+      deleteSessionsForTrainee
+    ),
+  ])
 }
 
-function* deleteSessionsForTrainee(action: DeleteSessionsForTraineeFSA) {
+export function* deleteSessionsForTrainee(action: DeleteSessionsForTraineeFSA) {
   try {
-    const querySnapshot: firebase.firestore.QuerySnapshot = yield call(() =>
-      db
-        .collection(DbCollection.Session)
-        .where('traineeRef', '==', action.payload!)
-        .get()
+    const sessions: Session[] = yield call(
+      fetchSessionsForTrainee,
+      action.payload!
     )
-    const sessionIdsToDelete: string[] = []
-    const batch = db.batch()
-    querySnapshot.forEach(doc => {
-      sessionIdsToDelete.push(doc.id)
-      batch.delete(doc.ref)
+    const deletedSessionIds: string[] = []
+
+    const batch = new BatchBuilder()
+    sessions.forEach(session => {
+      deletedSessionIds.push(session.id)
+      batch.delete(DbCollection.Session, session.id)
     })
-    yield call(() => batch.commit())
+    yield call([batch, 'execute'])
     // expel sessions from store
-    yield put(createExpelSessionAction(...sessionIdsToDelete))
+    yield put(createExpelSessionAction(...deletedSessionIds))
   } catch (e) {
     console.error(e)
   }
 }
 
-function* saveSessionForTrainee(action: SaveSessionForTraineeFSA) {
+export function* saveSessionForTrainee(action: SaveSessionForTraineeFSA) {
   if (action.payload && action.meta && action.meta.traineeId) {
     try {
       const doc = {
@@ -75,7 +69,7 @@ function* saveSessionForTrainee(action: SaveSessionForTraineeFSA) {
 }
 
 type SessionsById = {[key: string]: Session}
-function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
+export function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
   if (action.payload) {
     try {
       const normalizedSessions: NormalizedSchema<
@@ -98,7 +92,7 @@ function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
   }
 }
 
-function* addSessionsToTrainee(traineeId: string, sessions: Session[]) {
+export function* addSessionsToTrainee(traineeId: string, sessions: Session[]) {
   const trainee: Trainee = yield select(
     (state: ApplicationState) => state.trainees[traineeId]
   )
