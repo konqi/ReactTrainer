@@ -11,13 +11,9 @@ export enum SessionActions {
   FETCH_SESSIONS_FOR_TRAINEE = '[SESSION] fetch sessions for trainee',
 }
 
-export type IngestSessionPayload = Omit<Session, 'id' | 'traineeRef'>
-export type IngestSessionFSA = FSA<
-  SessionActions.INGEST_SESSION,
-  IngestSessionPayload
->
+export type IngestSessionFSA = FSA<SessionActions.INGEST_SESSION, Session>
 export const createIngestSessionAction = (
-  sessionToIngest: IngestSessionPayload
+  sessionToIngest: Session
 ): IngestSessionFSA => ({
   type: SessionActions.INGEST_SESSION,
   payload: sessionToIngest,
@@ -72,7 +68,7 @@ export type SaveSessionForTraineeFSA = FSA<
 export const createSaveSessionForTraineeAction = (
   traineeId: string,
   session: SaveSessionForTraineePayload
-) => ({
+): SaveSessionForTraineeFSA => ({
   type: SessionActions.SAVE_SESSION_FOR_TRAINEE,
   payload: session,
   meta: {traineeId},
