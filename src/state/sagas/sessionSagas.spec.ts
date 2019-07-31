@@ -4,7 +4,6 @@ import {
   fetchTraineeSessions,
   deleteSessionsForTrainee,
   addSessionsToTrainee,
-  selectTraineeById,
 } from './sessionSagas'
 import {takeEvery, all, call, put, select} from '@redux-saga/core/effects'
 import {
@@ -21,6 +20,7 @@ import {Collection} from '../../types/Collection'
 import {insertSession, fetchLatestSessionForTrainee} from '../../data/Queries'
 import {createAddTraineeAction} from '../trainees'
 import {createShowTraineeDetailsIntend} from '../intends/UserIntend'
+import {selectTraineeById} from '../selectors'
 
 jest.mock('../../data/db')
 jest.mock('../../data/BatchBuilder')
@@ -41,104 +41,209 @@ test('sessions root saga', () => {
   )
 })
 
-test('deleteSessionsForTrainee', () => {
-  const iterator = deleteSessionsForTrainee(
-    createDeleteSessionsForTraineeAction('traineeId')
-  )
+describe('deleteSessionsForTrainee', () => {
+  test('successful delete', () => {
+    const iterator = deleteSessionsForTrainee(
+      createDeleteSessionsForTraineeAction('traineeId')
+    )
 
-  // should fetch list of trainee sessions
-  let {value} = iterator.next()
-  expect(value).toEqual(call(query.fetchSessionsForTrainee, 'traineeId'))
+    // should fetch list of trainee sessions
+    let {value} = iterator.next()
+    expect(value).toEqual(call(query.fetchSessionsForTrainee, 'traineeId'))
 
-  // should invoke batch delete
-  ;({value} = iterator.next([new SessionBuilder('traineeId').build()]))
-  expect(value).toEqual(call([new BatchBuilder(), 'execute']))
+    // should invoke batch delete
+    ;({value} = iterator.next([new SessionBuilder('traineeId').build()]))
+    expect(value).toEqual(call([new BatchBuilder(), 'execute']))
 
-  expect(new BatchBuilder().delete).toHaveBeenCalledWith(
-    Collection.Session,
-    'sessionId'
-  )
-  ;({value} = iterator.next())
-  expect(value).toEqual(put(createExpelSessionAction('sessionId')))
+    expect(new BatchBuilder().delete).toHaveBeenCalledWith(
+      Collection.Session,
+      'sessionId'
+    )
+    ;({value} = iterator.next())
+    expect(value).toEqual(put(createExpelSessionAction('sessionId')))
 
-  const {done} = iterator.next()
+    const {done} = iterator.next()
 
-  expect(done).toBe(true)
+    expect(done).toBe(true)
+  })
+
+  test('error during saga', () => {
+    const iterator = deleteSessionsForTrainee(
+      createDeleteSessionsForTraineeAction('traineeId')
+    )
+
+    // should fetch list of trainee sessions
+    let {value} = iterator.next()
+    expect(value).toEqual(call(query.fetchSessionsForTrainee, 'traineeId'))
+
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn())
+      // should fail invoke batch delete
+    ;({value} = iterator.next(undefined))
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+
+    const {done} = iterator.next()
+    expect(done).toBe(true)
+  })
 })
 
-// TODO: test error during saga
+describe('saveSessionForTrainee', () => {
+  test('missing parameters', () => {
+    // @ts-ignore
+    const action = createSaveSessionForTraineeAction(undefined, undefined)
+    const iterator = saveSessionForTrainee(action)
 
-test('saveSessionForTrainee', () => {
-  const newSession = new SessionBuilder('traineeId').build()
-  const action = createSaveSessionForTraineeAction('traineeId', newSession)
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn())
+    // should fail
+    const {done} = iterator.next(undefined)
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
 
-  const iterator = saveSessionForTrainee(action)
+    expect(done).toBe(true)
+  })
 
-  // should insert session into database
-  let {value} = iterator.next()
-  expect(value).toEqual(call(insertSession, 'traineeId', newSession))
+  test('successful save', () => {
+    const newSession = new SessionBuilder('traineeId').build()
+    const action = createSaveSessionForTraineeAction('traineeId', newSession)
 
-  // should ingest the saved session into the store
-  ;({value} = iterator.next({id: 'testSessionId'}))
-  expect(value).toEqual(
-    put(createIngestSessionAction({...newSession, id: 'testSessionId'}))
-  )
+    const iterator = saveSessionForTrainee(action)
 
-  // should add the sessionId to the trainee entity
-  ;({value} = iterator.next())
-  expect(value).toEqual(
-    call(addSessionsToTrainee, 'traineeId', {
-      ...newSession,
-      id: 'testSessionId',
-    })
-  )
+    // should insert session into database
+    let {value} = iterator.next()
+    expect(value).toEqual(call(insertSession, 'traineeId', newSession))
 
-  const {done} = iterator.next()
-  expect(done).toBe(true)
+    // should ingest the saved session into the store
+    ;({value} = iterator.next({id: 'testSessionId'}))
+    expect(value).toEqual(
+      put(createIngestSessionAction({...newSession, id: 'testSessionId'}))
+    )
+
+    // should add the sessionId to the trainee entity
+    ;({value} = iterator.next())
+    expect(value).toEqual(
+      call(addSessionsToTrainee, 'traineeId', {
+        ...newSession,
+        id: 'testSessionId',
+      })
+    )
+
+    const {done} = iterator.next()
+    expect(done).toBe(true)
+  })
+
+  test('error during save', () => {
+    const newSession = new SessionBuilder('traineeId').build()
+    const action = createSaveSessionForTraineeAction('traineeId', newSession)
+
+    const iterator = saveSessionForTrainee(action)
+
+    // should insert session into database
+    let {value} = iterator.next()
+    expect(value).toEqual(call(insertSession, 'traineeId', newSession))
+
+    // should ingest the saved session into the store
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn())
+    ;({value} = iterator.next(undefined))
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+
+    const {done} = iterator.next()
+    expect(done).toBe(true)
+  })
 })
 
-// TODO: test saga without required parameters
+describe('fetchTraineeSessions', () => {
+  test('missing parameters', () => {
+    // @ts-ignore
+    const action = createShowTraineeDetailsIntend(undefined)
+    const iterator = fetchTraineeSessions(action)
 
-test('fetchTraineeSessions', () => {
-  const session = new SessionBuilder('traineeId').build()
-  const action = createShowTraineeDetailsIntend('traineeId')
-  const iterator = fetchTraineeSessions(action)
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn())
+    // should fail
+    const {done} = iterator.next(undefined)
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
 
-  // should fetch trainee sessions
-  let {value} = iterator.next()
-  expect(value).toEqual(call(fetchLatestSessionForTrainee, 'traineeId'))
+    expect(done).toBe(true)
+  })
 
-  // should add sessions to store
-  ;({value} = iterator.next({entities: {session: {[session.id]: session}}}))
-  expect(value).toEqual(
-    put(createIngestSessionsAction({[session.id]: session}))
-  )
+  test('successful fetch', () => {
+    const session = new SessionBuilder('traineeId').build()
+    const action = createShowTraineeDetailsIntend('traineeId')
+    const iterator = fetchTraineeSessions(action)
 
-  // should update session references of trainee
-  ;({value} = iterator.next())
-  expect(value).toEqual(call(addSessionsToTrainee, 'traineeId', session))
+    // should fetch trainee sessions
+    let {value} = iterator.next()
+    expect(value).toEqual(call(fetchLatestSessionForTrainee, 'traineeId'))
 
-  // should be done
-  const {done} = iterator.next()
-  expect(done).toBe(true)
+    // should add sessions to store
+    ;({value} = iterator.next({entities: {session: {[session.id]: session}}}))
+    expect(value).toEqual(
+      put(createIngestSessionsAction({[session.id]: session}))
+    )
+
+    // should update session references of trainee
+    ;({value} = iterator.next())
+    expect(value).toEqual(call(addSessionsToTrainee, 'traineeId', session))
+
+    // should be done
+    const {done} = iterator.next()
+    expect(done).toBe(true)
+  })
+
+  test('error during saga', () => {
+    const action = createShowTraineeDetailsIntend('traineeId')
+    const iterator = fetchTraineeSessions(action)
+
+    // should fetch trainee sessions
+    let {value} = iterator.next()
+    expect(value).toEqual(call(fetchLatestSessionForTrainee, 'traineeId'))
+
+    // should fail
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn())
+    const {done} = iterator.next(undefined)
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+
+    expect(done).toBe(true)
+  })
 })
 
-test('addSessionsToTrainee', () => {
-  const session = new SessionBuilder('traineeId').build()
-  const trainee = new TraineeBuilder().build()
-  const iterator = addSessionsToTrainee('traineeId', session)
+describe('addSessionsToTrainee', () => {
+  test('successfully add sessions to trainee', () => {
+    const session = new SessionBuilder('traineeId').build()
+    const trainee = new TraineeBuilder().build()
+    const iterator = addSessionsToTrainee('traineeId', session)
 
-  // should select the trainee from store
-  let {value} = iterator.next()
-  expect(value).toEqual(select(selectTraineeById, 'traineeId'))
+    // should select the trainee from store
+    let {value} = iterator.next()
+    expect(value).toEqual(select(selectTraineeById, 'traineeId'))
 
-  // should add session ref to trainee in store
-  ;({value} = iterator.next(trainee))
-  expect(value).toEqual(
-    put(createAddTraineeAction({...trainee, sessionsRef: [session.id]}))
-  )
+    // should add session ref to trainee in store
+    ;({value} = iterator.next(trainee))
+    expect(value).toEqual(
+      put(createAddTraineeAction({...trainee, sessionsRef: [session.id]}))
+    )
 
-  // should be done
-  const {done} = iterator.next()
-  expect(done).toBe(true)
+    // should be done
+    const {done} = iterator.next()
+    expect(done).toBe(true)
+  })
+
+  test('trainee not in store', () => {
+    const session = new SessionBuilder('traineeId').build()
+    const iterator = addSessionsToTrainee('traineeId', session)
+
+    // should select the trainee from store
+    let {value} = iterator.next()
+    expect(value).toEqual(select(selectTraineeById, 'traineeId'))
+
+    // should fail
+    const spy = jest.spyOn(console, 'error').mockImplementation(jest.fn())
+    const {done} = iterator.next(undefined)
+    expect(spy).toHaveBeenCalled()
+    spy.mockRestore()
+
+    expect(done).toBe(true)
+  })
 })

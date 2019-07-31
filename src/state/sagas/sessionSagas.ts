@@ -17,6 +17,7 @@ import {
   SessionActions,
 } from '../sessions/sessionActions'
 import {createAddTraineeAction} from '../trainees'
+import {selectTraineeById} from '../selectors'
 
 export function* sessionSagas() {
   yield all([
@@ -51,51 +52,56 @@ export function* deleteSessionsForTrainee(action: DeleteSessionsForTraineeFSA) {
 }
 
 export function* saveSessionForTrainee(action: SaveSessionForTraineeFSA) {
-  if (action.payload && action.meta && action.meta.traineeId) {
-    try {
-      const doc = {
-        ...action.payload,
-        traineeRef: action.meta!.traineeId,
-      }
-
-      const {id} = yield call(
-        insertSession,
-        action.meta!.traineeId,
-        action.payload
-      )
-
-      const session: Session = {...doc, id}
-      yield put(createIngestSessionAction(session))
-      yield call(addSessionsToTrainee, action.meta!.traineeId, session)
-    } catch (e) {
-      console.error(e)
-      // yield some error
+  try {
+    if (!action.payload) {
+      throw new Error('action is missing required property: payload')
     }
+    if (!action.meta || !action.meta.traineeId) {
+      throw new Error('action missing required property: meta.traineeId')
+    }
+    const doc = {
+      ...action.payload,
+      traineeRef: action.meta!.traineeId,
+    }
+
+    const {id} = yield call(
+      insertSession,
+      action.meta!.traineeId,
+      action.payload
+    )
+
+    const session: Session = {...doc, id}
+    yield put(createIngestSessionAction(session))
+    yield call(addSessionsToTrainee, action.meta!.traineeId, session)
+  } catch (e) {
+    console.error(e)
+    // yield some error
   }
 }
 
 type SessionsById = {[key: string]: Session}
 export function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
-  if (action.payload) {
-    try {
-      const normalizedSessions: NormalizedSchema<
-        {session: SessionsById},
-        string
-      > = yield call(fetchLatestSessionForTrainee, action.payload)
-      if (typeof normalizedSessions.entities.session === 'undefined') {
-        return
-      }
-      yield put(createIngestSessionsAction(normalizedSessions.entities.session))
-      // add sessions to trainees
-      yield call(
-        addSessionsToTrainee,
-        action.payload!,
-        ...Object.values(normalizedSessions.entities.session!)
-      )
-    } catch (e) {
-      console.error(e)
-      // yield some error?
+  try {
+    if (!action.payload) {
+      throw new Error('action is missing property: payload')
     }
+    const normalizedSessions: NormalizedSchema<
+      {session: SessionsById},
+      string
+    > = yield call(fetchLatestSessionForTrainee, action.payload)
+    if (typeof normalizedSessions.entities.session === 'undefined') {
+      return
+    }
+    yield put(createIngestSessionsAction(normalizedSessions.entities.session))
+    // add sessions to trainees
+    yield call(
+      addSessionsToTrainee,
+      action.payload!,
+      ...Object.values(normalizedSessions.entities.session!)
+    )
+  } catch (e) {
+    console.error(e)
+    // yield some error?
   }
 }
 
@@ -103,13 +109,17 @@ export function* addSessionsToTrainee(
   traineeId: string,
   ...sessions: Session[]
 ) {
-  const trainee: Trainee = yield select(selectTraineeById, traineeId)
-  trainee.sessionsRef = [
-    ...(trainee.sessionsRef || []),
-    ...sessions.map(session => session.id),
-  ]
-  yield put(createAddTraineeAction(trainee))
+  try {
+    const trainee: Trainee = yield select(selectTraineeById, traineeId)
+    if (!trainee) {
+      throw new Error('trainee not in store')
+    }
+    trainee.sessionsRef = [
+      ...(trainee.sessionsRef || []),
+      ...sessions.map(session => session.id),
+    ]
+    yield put(createAddTraineeAction(trainee))
+  } catch (e) {
+    console.error(e)
+  }
 }
-
-export const selectTraineeById = (state: ApplicationState, traineeId: string) =>
-  state.trainees[traineeId]
