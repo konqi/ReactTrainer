@@ -1,9 +1,10 @@
-import {put, takeEvery} from '@redux-saga/core/effects'
+import {put, takeEvery, all} from '@redux-saga/core/effects'
 import {
   UserIntend,
   AddTraineeIntendFSA,
   ShowTraineeDetailsIntendFSA,
   DeleteTraineeIntendFSA,
+  createShowTraineesIntend,
 } from '../intends/UserIntend'
 import {
   createSaveTraineeAction,
@@ -21,25 +22,27 @@ import {
 } from '../sessions/sessionActions'
 
 export function* userIntendSagas() {
-  yield takeEvery(UserIntend.ADD_TRAINEE, addTrainee)
-  yield takeEvery(UserIntend.DELETE_TRAINEE, deleteTrainee)
-  yield takeEvery(UserIntend.SHOW_TRAINEES, showTrainees)
-  yield takeEvery(UserIntend.ADD_SESSION, addSession)
-  yield takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, showTraineeDetails)
+  yield all([
+    takeEvery(UserIntend.ADD_TRAINEE, addTrainee),
+    takeEvery(UserIntend.DELETE_TRAINEE, deleteTrainee),
+    takeEvery(UserIntend.SHOW_TRAINEES, showTrainees),
+    takeEvery(UserIntend.ADD_SESSION, addSession),
+    takeEvery(UserIntend.SHOW_TRAINEE_DETAILS, showTraineeDetails),
+  ])
 }
 
-function* addTrainee({payload}: AddTraineeIntendFSA) {
+export function* addTrainee({payload}: AddTraineeIntendFSA) {
   yield put(createSaveTraineeAction(payload!))
   // return to trainee list
-  yield showTrainees()
+  yield put(createShowTraineesIntend())
 }
 
-function* showTrainees() {
+export function* showTrainees() {
   yield put(createFetchTraineesAction())
   yield put(createUiNavigateAction(Page.Trainees))
 }
 
-function* showTraineeDetails(action: ShowTraineeDetailsIntendFSA) {
+export function* showTraineeDetails(action: ShowTraineeDetailsIntendFSA) {
   if (action.payload) {
     yield put(createFetchTraineeAction(action.payload!))
     yield put(createFetchSessionsForTraineeAction(action.payload!))
@@ -52,13 +55,13 @@ function* showTraineeDetails(action: ShowTraineeDetailsIntendFSA) {
   }
 }
 
-function* addSession(action: IngestSessionFSA) {
+export function* addSession(action: IngestSessionFSA) {
   yield put(
     createSaveSessionForTraineeAction(action.meta.traineeId, action.payload!)
   )
 }
 
-function* deleteTrainee(action: DeleteTraineeIntendFSA) {
+export function* deleteTrainee(action: DeleteTraineeIntendFSA) {
   yield put(createDeleteSessionsForTraineeAction(action.payload!))
   yield put(createDeleteTraineeAction(action.payload!))
 }

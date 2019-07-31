@@ -1,14 +1,14 @@
-import {takeEvery} from '@redux-saga/core/effects'
+import {takeEvery, all} from '@redux-saga/core/effects'
 import {createBrowserHistory} from 'history'
 import {UiActions, UiNavigationFSA} from '../ui/uiActions'
 
 const history = createBrowserHistory()
 
 export function* uiSagas() {
-  yield takeEvery(UiActions.NAVIGATE, updateBrowserHistory)
+  yield all([takeEvery(UiActions.NAVIGATE, updateBrowserHistory)])
 }
 
-function* updateBrowserHistory(action: UiNavigationFSA) {
+export function* updateBrowserHistory(action: UiNavigationFSA) {
   const {page, params} = action.payload!
   // yield console.log(page, params)
   if (params) {

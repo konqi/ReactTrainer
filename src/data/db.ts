@@ -1,11 +1,6 @@
 import * as firebase from 'firebase/app'
 import 'firebase/firestore'
-import 'firebase/auth'
-
-export enum DbCollection {
-  Trainee = 'trainee',
-  Session = 'session',
-}
+// import 'firebase/auth'
 
 var firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,

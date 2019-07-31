@@ -1,6 +1,6 @@
 import {call, put, takeEvery} from '@redux-saga/core/effects'
 import {normalize} from 'normalizr'
-import {db, DbCollection} from '../../db'
+import {db, DbCollection} from '../../data/db'
 import {Trainee, traineeSchema} from '../../types/Trainee'
 import {createAddTraineeAction} from '../trainees'
 import {

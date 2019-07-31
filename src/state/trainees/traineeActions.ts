@@ -52,7 +52,7 @@ export const createDeleteTraineeAction = (
   payload: traineeId,
 })
 
-export type SaveTraineePayload = Omit<Trainee, 'id'>
+export type SaveTraineePayload = Pick<Trainee, 'name' | 'price'>
 export type SaveTraineeFSA = FSA<
   TraineeActions.SAVE_TRAINEE,
   SaveTraineePayload

@@ -1,6 +1,7 @@
 import {Trainee} from '../../types/Trainee'
 import {FSA} from '../../types/FSA'
 import {Session} from '../../types/Session'
+import pick from 'lodash/pick'
 
 export enum UserIntend {
   ADD_TRAINEE = '[INTEND] add trainee',
@@ -10,7 +11,7 @@ export enum UserIntend {
   SHOW_TRAINEE_DETAILS = '[INTEND] show trainee details',
 }
 
-export type AddTraineeIntendPayload = Omit<Trainee, 'id'>
+export type AddTraineeIntendPayload = Pick<Trainee, 'name' | 'price'>
 export type AddTraineeIntendFSA = FSA<
   UserIntend.ADD_TRAINEE,
   AddTraineeIntendPayload
@@ -19,7 +20,7 @@ export const createAddTraineeIntend = (
   payload: AddTraineeIntendPayload
 ): AddTraineeIntendFSA => ({
   type: UserIntend.ADD_TRAINEE,
-  payload,
+  payload: pick(payload, 'name', 'price') as AddTraineeIntendPayload,
 })
 
 export const createShowTraineesIntend = () => ({
