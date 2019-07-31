@@ -1,7 +1,8 @@
 import {db} from './db'
 import {Collection} from '../types/Collection'
-import {normalize} from 'normalizr'
+import {normalize, NormalizedSchema} from 'normalizr'
 import {Session, sessionSchema} from '../types/Session'
+import {Trainee, traineeSchema} from '../types/Trainee'
 
 export const fetchSessionsForTrainee = async (traineeId: string) => {
   const querySnapshot = await db
@@ -49,4 +50,37 @@ export const insertSession = async (
   }
 
   return await db.collection(Collection.Session).add(doc)
+}
+
+export const dbInsertTrainee = async (trainee: Omit<Trainee, 'id'>) => {
+  return await db.collection(Collection.Trainee).add(trainee)
+}
+
+export const dbDeleteTrainee = async (traineeId: string) => {
+  return await db
+    .collection(Collection.Trainee)
+    .doc(traineeId)
+    .delete()
+}
+
+export const dbFetchTrainee = async (traineeId: string): Promise<Trainee> => {
+  const dbTrainee = await db
+    .collection(Collection.Trainee)
+    .doc(traineeId)
+    .get()
+
+  if (!dbTrainee.exists) {
+    throw new Error(`trainee with id ${traineeId} not found in db.`)
+  }
+
+  return {...dbTrainee.data(), id: dbTrainee.id} as Trainee
+}
+
+export const dbQueryTrainees = async (): Promise<{[key: string]: Trainee}> => {
+  const querySnapshot = await db.collection(Collection.Trainee).get()
+
+  return normalize(
+    querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id})),
+    [traineeSchema]
+  ).entities.trainee
 }

@@ -1,7 +1,5 @@
-import {call, put, takeEvery} from '@redux-saga/core/effects'
-import {normalize} from 'normalizr'
-import {db, DbCollection} from '../../data/db'
-import {Trainee, traineeSchema} from '../../types/Trainee'
+import {call, put, all, takeEvery} from '@redux-saga/core/effects'
+import {Trainee} from '../../types/Trainee'
 import {createAddTraineeAction} from '../trainees'
 import {
   createExpelTraineeAction,
@@ -11,38 +9,40 @@ import {
   TraineeActions,
   FetchTraineeFSA,
 } from '../trainees/traineeActions'
+import {
+  dbInsertTrainee,
+  dbDeleteTrainee,
+  dbFetchTrainee,
+  dbQueryTrainees,
+} from '../../data/Queries'
 
 export function* traineeSagas() {
-  yield takeEvery(TraineeActions.FETCH_TRAINEES, fetchTrainees)
-  yield takeEvery(TraineeActions.SAVE_TRAINEE, saveTrainee)
-  yield takeEvery(TraineeActions.DELETE_TRAINEE, deleteTrainee)
-  yield takeEvery(TraineeActions.FETCH_TRAINEE, fetchTrainee)
+  yield all([
+    takeEvery(TraineeActions.FETCH_TRAINEES, fetchTrainees),
+    takeEvery(TraineeActions.SAVE_TRAINEE, saveTrainee),
+    takeEvery(TraineeActions.DELETE_TRAINEE, deleteTrainee),
+    takeEvery(TraineeActions.FETCH_TRAINEE, fetchTrainee),
+  ])
 }
 
-function* saveTrainee(action: SaveTraineeFSA) {
-  if (action.payload) {
-    try {
-      const {id} = yield call(() =>
-        db.collection(DbCollection.Trainee).add(action.payload!)
-      )
-
-      const trainee: Trainee = {...action.payload!, id}
-      yield put(createAddTraineeAction(trainee))
-    } catch (e) {
-      console.error(e)
-      // yield some error
+export function* saveTrainee(action: SaveTraineeFSA) {
+  try {
+    if (!action.payload) {
+      throw new Error('action is missing required property: payload')
     }
+    const {id} = yield call(dbInsertTrainee, action.payload!)
+
+    const trainee: Trainee = {...action.payload!, id}
+    yield put(createAddTraineeAction(trainee))
+  } catch (e) {
+    console.error(e)
+    // yield some error
   }
 }
 
-function* deleteTrainee(action: DeleteTraineeFSA) {
+export function* deleteTrainee(action: DeleteTraineeFSA) {
   try {
-    yield call(() =>
-      db
-        .collection(DbCollection.Trainee)
-        .doc(action.payload!)
-        .delete()
-    )
+    yield call(dbDeleteTrainee, action.payload!)
     // expel trainee from store
     yield put(createExpelTraineeAction(action.payload!))
   } catch (e) {
@@ -50,43 +50,31 @@ function* deleteTrainee(action: DeleteTraineeFSA) {
   }
 }
 
-function* fetchTrainee(action: FetchTraineeFSA) {
+export function* fetchTrainee(action: FetchTraineeFSA) {
   try {
     const traineeId = action.payload
-    const trainee: firebase.firestore.DocumentSnapshot = yield call(() =>
-      db
-        .collection(DbCollection.Trainee)
-        .doc(traineeId)
-        .get()
-    )
-
-    if (trainee.exists) {
-      yield put(
-        createIngestTraineesAction({
-          [trainee.id]: {...(trainee.data() as Trainee), id: trainee.id},
-        })
-      )
-    } else {
-      console.error(`trainee with id '${traineeId}' not found`)
+    if (!traineeId) {
+      throw new Error('action missing required property: payload')
     }
+
+    const trainee: Trainee = yield call(dbFetchTrainee, traineeId)
+
+    yield put(
+      createIngestTraineesAction({
+        [trainee.id]: trainee,
+      })
+    )
   } catch (e) {
     console.error(e)
     // yield some error
   }
 }
 
-function* fetchTrainees() {
+export function* fetchTrainees() {
   try {
-    const trainees: firebase.firestore.QuerySnapshot = yield call(() =>
-      db.collection(DbCollection.Trainee).get()
-    )
+    const traineesById: {[key: string]: Trainee} = yield call(dbQueryTrainees)
 
-    const normalizedTrainees = normalize(
-      trainees.docs.map(doc => ({...doc.data(), id: doc.id})),
-      [traineeSchema]
-    )
-
-    yield put(createIngestTraineesAction(normalizedTrainees.entities.trainee))
+    yield put(createIngestTraineesAction(traineesById))
   } catch (e) {
     console.error(e)
     // yield some error
