@@ -4,8 +4,9 @@ import {
   fetchTraineeSessions,
   deleteSessionsForTrainee,
   addSessionsToTrainee,
+  selectTraineeById,
 } from './sessionSagas'
-import {takeEvery, all, call, put} from '@redux-saga/core/effects'
+import {takeEvery, all, call, put, select} from '@redux-saga/core/effects'
 import {
   SessionActions,
   createDeleteSessionsForTraineeAction,
@@ -13,12 +14,15 @@ import {
   createSaveSessionForTraineeAction,
   SaveSessionForTraineePayload,
   createIngestSessionAction,
+  createIngestSessionsAction,
 } from '../sessions/sessionActions'
-import {SessionBuilder} from '../../__mocks__/store'
+import {SessionBuilder, TraineeBuilder} from '../../__mocks__/store'
 import {query, BatchBuilder} from '../../data'
 import {Collection} from '../../types/Collection'
-import {insertSession} from '../../data/Queries'
+import {insertSession, fetchLatestSessionForTrainee} from '../../data/Queries'
 import {createAddTraineeAction} from '../trainees'
+import {createShowTraineeDetailsIntend} from '../intends/UserIntend'
+import {Session} from 'inspector'
 
 jest.mock('../../data/db')
 jest.mock('../../data/BatchBuilder')
@@ -72,29 +76,71 @@ test('saveSessionForTrainee', () => {
 
   const iterator = saveSessionForTrainee(action)
 
-  // it should insert session into database
+  // should insert session into database
   let {value} = iterator.next()
   expect(value).toEqual(call(insertSession, 'traineeId', newSession))
 
-  // it should ingest the saved session into the store
+  // should ingest the saved session into the store
   ;({value} = iterator.next({id: 'testSessionId'}))
   expect(value).toEqual(
     put(createIngestSessionAction({...newSession, id: 'testSessionId'}))
   )
 
-  // it should add the sessionId to the trainee entity
+  // should add the sessionId to the trainee entity
   ;({value} = iterator.next())
   expect(value).toEqual(
-    call(addSessionsToTrainee, 'traineeId', [
-      {
-        ...newSession,
-        id: 'testSessionId',
-      },
-    ])
+    call(addSessionsToTrainee, 'traineeId', {
+      ...newSession,
+      id: 'testSessionId',
+    })
   )
 
   const {done} = iterator.next()
   expect(done).toBe(true)
 })
-test('fetchTraineeSessions', () => {})
-test('addSessionsToTrainee', () => {})
+
+// TODO: test saga without required parameters
+
+test('fetchTraineeSessions', () => {
+  const session = new SessionBuilder('traineeId').build()
+  const action = createShowTraineeDetailsIntend('traineeId')
+  const iterator = fetchTraineeSessions(action)
+
+  // should fetch trainee sessions
+  let {value} = iterator.next()
+  expect(value).toEqual(call(fetchLatestSessionForTrainee, 'traineeId'))
+
+  // should add sessions to store
+  ;({value} = iterator.next({entities: {session: {[session.id]: session}}}))
+  expect(value).toEqual(
+    put(createIngestSessionsAction({[session.id]: session}))
+  )
+
+  // should update session references of trainee
+  ;({value} = iterator.next())
+  expect(value).toEqual(call(addSessionsToTrainee, 'traineeId', session))
+
+  // should be done
+  const {done} = iterator.next()
+  expect(done).toBe(true)
+})
+
+test('addSessionsToTrainee', () => {
+  const session = new SessionBuilder('traineeId').build()
+  const trainee = new TraineeBuilder().build()
+  const iterator = addSessionsToTrainee('traineeId', session)
+
+  // should select the trainee from store
+  let {value} = iterator.next()
+  expect(value).toEqual(select(selectTraineeById, 'traineeId'))
+
+  // should add session ref to trainee in store
+  ;({value} = iterator.next(trainee))
+  expect(value).toEqual(
+    put(createAddTraineeAction({...trainee, sessionsRef: [session.id]}))
+  )
+
+  // should be done
+  const {done} = iterator.next()
+  expect(done).toBe(true)
+})

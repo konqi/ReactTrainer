@@ -87,7 +87,8 @@ export function* fetchTraineeSessions(action: ShowTraineeDetailsIntendFSA) {
       }
       yield put(createIngestSessionsAction(normalizedSessions.entities.session))
       // add sessions to trainees
-      yield addSessionsToTrainee(
+      yield call(
+        addSessionsToTrainee,
         action.payload!,
         ...Object.values(normalizedSessions.entities.session!)
       )
@@ -102,12 +103,13 @@ export function* addSessionsToTrainee(
   traineeId: string,
   ...sessions: Session[]
 ) {
-  const trainee: Trainee = yield select(
-    (state: ApplicationState) => state.trainees[traineeId]
-  )
+  const trainee: Trainee = yield select(selectTraineeById, traineeId)
   trainee.sessionsRef = [
     ...(trainee.sessionsRef || []),
     ...sessions.map(session => session.id),
   ]
   yield put(createAddTraineeAction(trainee))
 }
+
+export const selectTraineeById = (state: ApplicationState, traineeId: string) =>
+  state.trainees[traineeId]
