@@ -12,7 +12,6 @@ import {
   createDeleteSessionsForTraineeAction,
   createExpelSessionAction,
   createSaveSessionForTraineeAction,
-  SaveSessionForTraineePayload,
   createIngestSessionAction,
   createIngestSessionsAction,
 } from '../sessions/sessionActions'
@@ -22,7 +21,6 @@ import {Collection} from '../../types/Collection'
 import {insertSession, fetchLatestSessionForTrainee} from '../../data/Queries'
 import {createAddTraineeAction} from '../trainees'
 import {createShowTraineeDetailsIntend} from '../intends/UserIntend'
-import {Session} from 'inspector'
 
 jest.mock('../../data/db')
 jest.mock('../../data/BatchBuilder')
